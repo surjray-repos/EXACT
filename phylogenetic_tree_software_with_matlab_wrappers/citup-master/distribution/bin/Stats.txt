@@ -1,0 +1,13 @@
+num_misplaced_mutations	30
+average_freq_error	0.0767803
+num_nonpreserved_edges	2
+correct_tree	0
+num_nodes_predicted	4
+same_node_simulated	4961
+same_node_predicted	4301
+neighbours_simulated	6519
+neighbours_predicted	2296
+ancestors_simulated	5768
+ancestors_predicted	5768
+non_ancestors_simulated	2652
+non_ancestors_predicted	1122

@@ -1,0 +1,3 @@
+CITUP command: /home/surjray/Dropbox/phylogenetic_tree_software_with_matlab_wrappers/citup-master/bin/runCITUP2.sh /home/surjray/Dropbox/phylogenetic_tree_software_with_matlab_wrappers/citup-master/test_fileF927395173 5 fileF927395173
+
+from inside "/bin"

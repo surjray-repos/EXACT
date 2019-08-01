@@ -1,0 +1,10 @@
+/home/jbento/phylogenetic_tree_software_with_matlab_wrappers/AncesTree-master/build/CMakeFiles/edit_cache.dir
+/home/jbento/phylogenetic_tree_software_with_matlab_wrappers/AncesTree-master/build/CMakeFiles/rebuild_cache.dir
+/home/jbento/phylogenetic_tree_software_with_matlab_wrappers/AncesTree-master/build/CMakeFiles/ancestree_ilp.dir
+/home/jbento/phylogenetic_tree_software_with_matlab_wrappers/AncesTree-master/build/CMakeFiles/analyse_solution_prob.dir
+/home/jbento/phylogenetic_tree_software_with_matlab_wrappers/AncesTree-master/build/CMakeFiles/analyse_solution.dir
+/home/jbento/phylogenetic_tree_software_with_matlab_wrappers/AncesTree-master/build/CMakeFiles/construct_ancestry_matrix.dir
+/home/jbento/phylogenetic_tree_software_with_matlab_wrappers/AncesTree-master/build/CMakeFiles/ancestree.dir
+/home/jbento/phylogenetic_tree_software_with_matlab_wrappers/AncesTree-master/build/CMakeFiles/visualize_solution.dir
+/home/jbento/phylogenetic_tree_software_with_matlab_wrappers/AncesTree-master/build/CMakeFiles/analyse.dir
+/home/jbento/phylogenetic_tree_software_with_matlab_wrappers/AncesTree-master/build/CMakeFiles/cluster.dir

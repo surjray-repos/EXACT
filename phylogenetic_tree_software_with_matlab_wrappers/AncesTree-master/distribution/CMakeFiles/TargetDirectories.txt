@@ -1,0 +1,10 @@
+/home/jbento/AncesTree-master/CMakeFiles/edit_cache.dir
+/home/jbento/AncesTree-master/CMakeFiles/rebuild_cache.dir
+/home/jbento/AncesTree-master/CMakeFiles/ancestree_ilp.dir
+/home/jbento/AncesTree-master/CMakeFiles/analyse_solution_prob.dir
+/home/jbento/AncesTree-master/CMakeFiles/analyse_solution.dir
+/home/jbento/AncesTree-master/CMakeFiles/construct_ancestry_matrix.dir
+/home/jbento/AncesTree-master/CMakeFiles/ancestree.dir
+/home/jbento/AncesTree-master/CMakeFiles/visualize_solution.dir
+/home/jbento/AncesTree-master/CMakeFiles/analyse.dir
+/home/jbento/AncesTree-master/CMakeFiles/cluster.dir
