@@ -34,7 +34,7 @@ max_num_partitions = 1;
 device_tree_subset_value = 1;
 CUDA_threads_per_block = 32;
 CUDA_blocks = 128;
-top_k_value = 100;
+top_k_value = min(100,(min_tree_size+1)^(min_tree_size-1));
 
 % run EXACT
 [ourcode_output, ourcode_best_bic, ourcode_all_Ms] = EXACT_wrapper_diff_tree_size(F, error_rate, min_tree_size, max_tree_size, path_to_folder, exec_name, cpu_gpu, cost_function, top_k_value, GPU_id, num_CPU_cores, max_num_partitions, device_tree_subset_value, CUDA_threads_per_block, CUDA_blocks);
