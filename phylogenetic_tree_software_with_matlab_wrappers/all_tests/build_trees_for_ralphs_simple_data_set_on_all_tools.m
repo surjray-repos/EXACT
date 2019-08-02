@@ -3,10 +3,11 @@
 
 %% load the data set
 
-%input_file = '/home/surjray/Dropbox/phylogenetic_tree_software_with_matlab_wrappers/all_tests/Sample_test_data/ralphs_simple_data_set_all_mutations';
-%input_file = '/home/surjray/Dropbox/phylogenetic_tree_software_with_matlab_wrappers/all_tests/Sample_test_data/ralphs_simple_data_set_all_mutations_except_mut_5';
+%input_file = '/home/surjray/Phylogeny_repo/phylogenetic_tree_software_with_matlab_wrappers/all_tests/Sample_test_data/ralphs_simple_data_set_all_mutations_except_mut_5';
 
-input_file = '/home/surjray/Dropbox/phylogenetic_tree_software_with_matlab_wrappers/all_tests/Sample_test_data/ralphs_second_simple_data_set_all_mutations';
+%input_file = '/home/surjray/Phylogeny_repo/phylogenetic_tree_software_with_matlab_wrappers/all_tests/Sample_test_data/ralphs_second_simple_data_set_all_mutations';
+
+input_file = '/home/surjray/Phylogeny_repo/phylogenetic_tree_software_with_matlab_wrappers/all_tests/Sample_test_data/ralphs_third_simple_data_set_all_mutations';
 
 
 [F, scale] = transform_elkebir_input_data_into_F_matrix(input_file);
@@ -14,7 +15,7 @@ input_file = '/home/surjray/Dropbox/phylogenetic_tree_software_with_matlab_wrapp
 
 	
 %% run our code
-base_folder = '/home/surjray/Dropbox/phylogenetic_tree_software_with_matlab_wrappers/our_GPU_code';
+base_folder = '/home/surjray/Phylogeny_repo/phylogenetic_tree_software_with_matlab_wrappers/our_GPU_code';
 
 run([base_folder, '/distribution/cvx/cvx/cvx_setup']);
 
@@ -87,7 +88,7 @@ generate_simple_muller_plots(U2,M_target,cum_nodelbs,node_col);
 set(gca,'visible','off')
 
 %% run PhyloWGS
-base_folder = '/home/surjray/Dropbox/phylogenetic_tree_software_with_matlab_wrappers/phylowgs-master';
+base_folder = '/home/surjray/Phylogeny_repo/phylogenetic_tree_software_with_matlab_wrappers/phylowgs-master';
 
 %Constants for PhyloWGS, should not be changed for sequencing data
 mu_r = 0.999;
@@ -154,7 +155,7 @@ generate_simple_muller_plots(U2,M_target,cum_nodelbs,node_col);
 set(gca,'visible','off')
 %% run AncesTree
 
-base_folder = '/home/surjray/Dropbox/phylogenetic_tree_software_with_matlab_wrappers/AncesTree-master';
+base_folder = '/home/surjray/Phylogeny_repo/phylogenetic_tree_software_with_matlab_wrappers/AncesTree-master';
 
 alpha = 0.3; % if alpha is big, lots of things will be clustered together
 beta = 0.8; % to choose a larger beta we need more samples , i.e. larger T_samples
@@ -208,7 +209,7 @@ generate_simple_muller_plots(U2,M_target,cum_nodelbs,node_col);
 set(gca,'visible','off')
 %% run Canopy
 
-base_folder =  '/home/surjray/Dropbox/phylogenetic_tree_software_with_matlab_wrappers/Canopy-master';
+base_folder =  '/home/surjray/Phylogeny_repo/phylogenetic_tree_software_with_matlab_wrappers/Canopy-master';
 
 path_to_folder = [base_folder, '/demo_code/'];
 
@@ -264,7 +265,7 @@ subplot(2,5,9);
 generate_simple_muller_plots(U2,M_target,cum_nodelbs,node_col);
 set(gca,'visible','off')
 %% run CITUP
-base_folder = '/home/surjray/Dropbox/phylogenetic_tree_software_with_matlab_wrappers/citup-master';
+base_folder = '/home/surjray/Phylogeny_repo/phylogenetic_tree_software_with_matlab_wrappers/citup-master';
 
 % parameters
 wrapper_working_directory = [base_folder,'/distribution/'];
