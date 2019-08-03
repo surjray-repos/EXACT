@@ -228,8 +228,6 @@ cluster_number_end = size(F,1)-1;
 % why doesn't canopy output multiple tree sizes? 
 canopy_output = canopy_wrapper(input_file, path_to_folder, burnin_val, thin_val, K_min_val, K_max_val, numchains_val, maxsimrun_val, minsimrun_val, writeskip_val, cluster_number_start, cluster_number_end);
 
-delete(fileF_name);
-
 [U2 , clust2] = extract_U_mat_and_clust_from_canopy_output(canopy_output);
 
 M_target = canopy_output{2};
