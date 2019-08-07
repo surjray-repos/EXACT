@@ -64,16 +64,16 @@ function [M_canopy_output] = canopy_wrapper(full_input_file_name, wrapper_dir, b
 	X_total_reads = nan(1,samples);
 	
 	for t = 1:numberNodes
-	for i = 1:samples
-		%R shall get the right_set elements (alternate alleles)
-		R_alt_allele(i) = right_set(t,i);
-		%X shall get the sum of right_set elements (alternate alleles) and
-		%left_set
-		X_total_reads(i) = left_set(t,i) + right_set(t,i);
-	end
-	
-	R_matrix_from_SampleData = [R_matrix_from_SampleData; R_alt_allele];
-	X_matrix_from_SampleData = [X_matrix_from_SampleData; X_total_reads];
+		for i = 1:samples
+			%R shall get the right_set elements (alternate alleles)
+			R_alt_allele(i) = right_set(t,i);
+			%X shall get the sum of right_set elements (alternate alleles) and
+			%left_set
+			X_total_reads(i) = left_set(t,i) + right_set(t,i);
+		end
+		
+		R_matrix_from_SampleData = [R_matrix_from_SampleData; R_alt_allele];
+		X_matrix_from_SampleData = [X_matrix_from_SampleData; X_total_reads];
 	end
 	
 	fileF_R_matrix = ['R_file.tsv'];

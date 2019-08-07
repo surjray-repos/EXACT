@@ -5,15 +5,14 @@
 
 %input_file = '/home/surjray/Phylogeny_repo/phylogenetic_tree_software_with_matlab_wrappers/all_tests/Sample_test_data/ralphs_simple_data_set_all_mutations_except_mut_5';
 
-%input_file = '/home/surjray/Phylogeny_repo/phylogenetic_tree_software_with_matlab_wrappers/all_tests/Sample_test_data/ralphs_second_simple_data_set_all_mutations';
+input_file = '/home/surjray/Phylogeny_repo/phylogenetic_tree_software_with_matlab_wrappers/all_tests/Sample_test_data/ralphs_second_simple_data_set_all_mutations';
 
-input_file = '/home/surjray/Phylogeny_repo/phylogenetic_tree_software_with_matlab_wrappers/all_tests/Sample_test_data/ralphs_third_simple_data_set_all_mutations';
+%input_file = '/home/surjray/Phylogeny_repo/phylogenetic_tree_software_with_matlab_wrappers/all_tests/Sample_test_data/ralphs_third_simple_data_set_all_mutations';
 
 
 [F, scale] = transform_elkebir_input_data_into_F_matrix(input_file);
 
-
-	
+figure;
 %% run our code
 base_folder = '/home/surjray/Phylogeny_repo/phylogenetic_tree_software_with_matlab_wrappers/our_GPU_code';
 
@@ -84,6 +83,7 @@ end
 subplot(2,5,6);
 %donut((M_target(:,1:3)+M_target(:,4:6))',cum_nodelbs,node_col);
 %donut(M_target(:,1:5)',cum_nodelbs,node_col);
+M_target = M_target(:,[1,4,2,5,3,6]);
 generate_simple_muller_plots(U2,M_target,cum_nodelbs,node_col);
 set(gca,'visible','off')
 
@@ -151,6 +151,7 @@ end
 subplot(2,5,7);
 %donut((M_target(:,1:3)+M_target(:,4:6))',cum_nodelbs,node_col);
 %donut(M_target(:,1:5)',cum_nodelbs,node_col);
+M_target = M_target(:,[1,4,2,5,3,6]);
 generate_simple_muller_plots(U2,M_target,cum_nodelbs,node_col);
 set(gca,'visible','off')
 %% run AncesTree
@@ -205,6 +206,8 @@ end
 subplot(2,5,8);
 %donut((M_target(:,1:3)+M_target(:,4:6))',cum_nodelbs,node_col);
 %donut(M_target(:,1:5)',cum_nodelbs,node_col);
+M_target = M_target(:,[1,4,2,5,3,6]);
+
 generate_simple_muller_plots(U2,M_target,cum_nodelbs,node_col);
 set(gca,'visible','off')
 %% run Canopy
@@ -260,6 +263,8 @@ end
 subplot(2,5,9);
 %donut((M_target(:,1:3)+M_target(:,4:6))',cum_nodelbs,node_col);
 %donut(M_target(:,1:5)',cum_nodelbs,node_col);
+M_target = M_target(:,[1,4,2,5,3,6]);
+
 generate_simple_muller_plots(U2,M_target,cum_nodelbs,node_col);
 set(gca,'visible','off')
 %% run CITUP
@@ -324,6 +329,8 @@ end
 subplot(2,5,10);
 %donut((M_target(:,1:3)+M_target(:,4:6))',cum_nodelbs,node_col);
 %donut(M_target(:,1:5)',cum_nodelbs,node_col);
+M_target = M_target(:,[1,4,2,5,3,6]);
+
 generate_simple_muller_plots(U2,M_target,cum_nodelbs,node_col);
 set(gca,'visible','off')
 
@@ -370,6 +377,8 @@ for t = 1:10 % this will show us the top 10 trees
 	subplot(2,10,t+10);
 	%donut((M_target(:,1:3)+M_target(:,4:6))',cum_nodelbs,node_col)
 	%donut(M_target(:,1:5)',cum_nodelbs,node_col)
+	M_target = M_target(:,[1,4,2,5,3,6]);
+
 	generate_simple_muller_plots(U2,M_target,cum_nodelbs,node_col);
 	set(gca,'visible','off')
 end
