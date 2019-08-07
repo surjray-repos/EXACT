@@ -9,7 +9,7 @@ all_our_code_outputs_new = {};
 for file_count_id = 1:90
     %% read input data from file
 
-    path_to_sim_ances_tree_data = '/home/surjray/Dropbox/phylogenetic_tree_software_with_matlab_wrappers/all_tests/Sample_test_data/AncesTree_data/simulated/';
+    path_to_sim_ances_tree_data = '/home/surjray/Phylogeny_repo/phylogenetic_tree_software_with_matlab_wrappers/all_tests/Sample_test_data/AncesTree_data/simulated/';
     list_of_dirs = dir(path_to_sim_ances_tree_data);
     count = 0;
     found_flag = 0;
@@ -68,7 +68,7 @@ for file_count_id = 1:90
 %     cd(start_folder);
     
     %% get correct form of matrices before comparing
-    ourcode_output = load('/home/surjray/Dropbox/phylogenetic_tree_software_with_matlab_wrappers/all_tests/all_results/our_code_all_files_ELKEBIR_synthetic_data_only_size_10_trees_29-Jul-2018_18_18_48.mat','all_our_code_outputs_new');
+    ourcode_output = load('/home/surjray/Phylogeny_repo/phylogenetic_tree_software_with_matlab_wrappers/all_tests/all_results/our_code_all_files_ELKEBIR_synthetic_data_only_size_10_trees_29-Jul-2018_18_18_48.mat','all_our_code_outputs_new');
     ourcode_output_check = ourcode_output.all_our_code_outputs_new{file_count_id};
     
     U2 = inv(eye(size(ourcode_output_check{3})) - ourcode_output_check{3} );

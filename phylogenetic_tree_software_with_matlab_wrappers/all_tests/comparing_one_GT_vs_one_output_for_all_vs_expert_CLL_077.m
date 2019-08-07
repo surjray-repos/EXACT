@@ -10,7 +10,7 @@ all_error_of_ancestry_relations = [ ];
 file_count_id = 27;
 
 %getting EXACT data for real file no. 27
-ourcode_output = load('/home/surjray/Dropbox/phylogenetic_tree_software_with_matlab_wrappers/all_tests/all_results/our_code_on_real_data_tree_sizes_6_9_top_20_16-Apr-2019-20-52-36.mat','all_our_code_outputs');
+ourcode_output = load('/home/surjray/Phylogeny_repo/phylogenetic_tree_software_with_matlab_wrappers/all_tests/all_results/our_code_on_real_data_tree_sizes_6_9_top_20_16-Apr-2019-20-52-36.mat','all_our_code_outputs');
 ourcode_output_check = ourcode_output.all_our_code_outputs{file_count_id};
 
 U2 = inv(eye(size(ourcode_output_check{3})) - ourcode_output_check{3});
@@ -20,7 +20,7 @@ clust2 = [ [1: length(ourcode_output_check{6})]' , ourcode_output_check{6}];
 [exact_error_rates] = compare_trees_using_U_matrices_and_clustering(U1, clust1, U2, clust2);
 
 %getting AncesTree data for real file no. 27
-ancestree_output = load('/home/surjray/Dropbox/phylogenetic_tree_software_with_matlab_wrappers/all_tests/all_results/ancestree_all_files_minus_a_few_ELKEBIR_real_data_17-Apr-2019_01_21_08.mat','all_ancestree_output');
+ancestree_output = load('/home/surjray/Phylogeny_repo/phylogenetic_tree_software_with_matlab_wrappers/all_tests/all_results/ancestree_all_files_minus_a_few_ELKEBIR_real_data_17-Apr-2019_01_21_08.mat','all_ancestree_output');
 ancestree_output = ancestree_output.all_ancestree_output{file_count_id};
 
 U2 = ancestree_output{3}{1};
@@ -36,7 +36,7 @@ end
 [ancestree_error_rates] = compare_trees_using_U_matrices_and_clustering(U1, clust1, U2, clust2);
 
 %getting PhyloWGS data for real file no. 27
-phyloWGS_output = load('/home/surjray/Dropbox/phylogenetic_tree_software_with_matlab_wrappers/all_tests/all_results/phyloWGS_all_files_ELKEBIR_real_data_16-April-2019 18_27_30.mat','all_phylosub_outputs');
+phyloWGS_output = load('/home/surjray/Phylogeny_repo/phylogenetic_tree_software_with_matlab_wrappers/all_tests/all_results/phyloWGS_all_files_ELKEBIR_real_data_16-April-2019 18_27_30.mat','all_phylosub_outputs');
 phyloWGS_output = phyloWGS_output.all_phylosub_outputs{file_count_id};
 
 U2 = phyloWGS_output{1}{1};
@@ -65,7 +65,7 @@ end
 [phylowgs_error_rates] = compare_trees_using_U_matrices_and_clustering(U1, clust1, U2, clust2);
 
 %getting CITUP data for real file no. 27
-citup_output = load('/home/surjray/Dropbox/phylogenetic_tree_software_with_matlab_wrappers/all_tests/all_results/citup_all_files_ELKEBIR_real_data_17-Apr-2019_01_07_16.mat','all_citup_outputs');
+citup_output = load('/home/surjray/Phylogeny_repo/phylogenetic_tree_software_with_matlab_wrappers/all_tests/all_results/citup_all_files_ELKEBIR_real_data_17-Apr-2019_01_07_16.mat','all_citup_outputs');
 citup_output = citup_output.all_citup_outputs{file_count_id};
 
 U2 = citup_output{1}{1}{1};
@@ -92,7 +92,7 @@ clust2(:,2) = 1 + clust2(:,2);
 [citup_error_rates] = compare_trees_using_U_matrices_and_clustering(U1, clust1, U2, clust2);
 
 %getting CANOPY data for real file no. 27
-canopy_output = load('/home/surjray/Dropbox/phylogenetic_tree_software_with_matlab_wrappers/all_tests/all_results/all_canopy_outputs_on_real_Elkebir_data_24-Apr-2019.mat','all_canopy_outputs');
+canopy_output = load('/home/surjray/Phylogeny_repo/phylogenetic_tree_software_with_matlab_wrappers/all_tests/all_results/all_canopy_outputs_on_real_Elkebir_data_24-Apr-2019.mat','all_canopy_outputs');
 canopy_output = canopy_output.all_canopy_outputs{file_count_id};
 
 [U2, clust2] = extract_U_mat_and_clust_from_canopy_output(canopy_output);

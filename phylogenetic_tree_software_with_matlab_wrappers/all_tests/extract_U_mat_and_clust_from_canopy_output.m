@@ -251,8 +251,6 @@ function [U, clust]	 = extract_U_mat_and_clust_from_canopy_output(canopy_output)
 	
 	clust = final_clust;
 	
-	
 	U = col_row_sorted_canopy_U_matrix;
 	
-
 end

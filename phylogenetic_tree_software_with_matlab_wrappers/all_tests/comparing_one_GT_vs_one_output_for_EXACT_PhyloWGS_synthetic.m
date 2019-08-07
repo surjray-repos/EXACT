@@ -10,7 +10,7 @@ figure;
 for file_count_id = 1:90
     %% read input data from file
 
-    path_to_sim_ances_tree_data = '/home/surjray/Dropbox/phylogenetic_tree_software_with_matlab_wrappers/all_tests/Sample_test_data/AncesTree_data/simulated/';
+    path_to_sim_ances_tree_data = '/home/surjray/Phylogeny_repo/phylogenetic_tree_software_with_matlab_wrappers/all_tests/Sample_test_data/AncesTree_data/simulated/';
     list_of_dirs = dir(path_to_sim_ances_tree_data);
     count = 0;
     found_flag = 0;
@@ -44,8 +44,8 @@ for file_count_id = 1:90
     clust1 = true_tree_data{5};
     
     %% get correct form of matrices before comparing
-    %ourcode_output = load('/home/surjray/Dropbox/phylogenetic_tree_software_with_matlab_wrappers/all_tests/all_results/our_code_all_files_ELKEBIR_synthetic_data_only_size_10_trees_29-Jul-2018_18_18_48.mat','all_our_code_outputs_new');
-    ourcode_output = load('/home/surjray/Dropbox/phylogenetic_tree_software_with_matlab_wrappers/all_tests/all_results/our_code_all_files_synthetic_data_top_20_size_7_10_date_09_march_2019_1pm.mat','all_our_code_outputs_top_k');
+    %ourcode_output = load('/home/surjray/Phylogeny_repo/phylogenetic_tree_software_with_matlab_wrappers/all_tests/all_results/our_code_all_files_ELKEBIR_synthetic_data_only_size_10_trees_29-Jul-2018_18_18_48.mat','all_our_code_outputs_new');
+    ourcode_output = load('/home/surjray/Phylogeny_repo/phylogenetic_tree_software_with_matlab_wrappers/all_tests/all_results/our_code_all_files_synthetic_data_top_20_size_7_10_date_09_march_2019_1pm.mat','all_our_code_outputs_top_k');
 	%ourcode_output_check = ourcode_output.all_our_code_outputs_new{file_count_id};
     ourcode_output_check = ourcode_output.all_our_code_outputs_top_k{file_count_id};
 	
@@ -77,7 +77,7 @@ figure;
 for file_count_id = 1:90
     %% read input data from file
 
-    path_to_sim_ances_tree_data = '/home/surjray/Dropbox/phylogenetic_tree_software_with_matlab_wrappers/all_tests/Sample_test_data/AncesTree_data/simulated/';
+    path_to_sim_ances_tree_data = '/home/surjray/Phylogeny_repo/phylogenetic_tree_software_with_matlab_wrappers/all_tests/Sample_test_data/AncesTree_data/simulated/';
     list_of_dirs = dir(path_to_sim_ances_tree_data);
     count = 0;
     found_flag = 0;
@@ -111,8 +111,8 @@ for file_count_id = 1:90
     clust1 = true_tree_data{5};
     
     %% get correct form of matrices before comparing
-    %ourcode_output = load('/home/surjray/Dropbox/phylogenetic_tree_software_with_matlab_wrappers/all_tests/all_results/our_code_all_files_ELKEBIR_synthetic_data_only_size_10_trees_29-Jul-2018_18_18_48.mat','all_our_code_outputs_new');
-    ourcode_output = load('/home/surjray/Dropbox/phylogenetic_tree_software_with_matlab_wrappers/all_tests/all_results/our_code_all_files_synthetic_data_top_20_size_7_10_date_09_march_2019_1pm.mat','all_our_code_outputs_top_k');
+    %ourcode_output = load('/home/surjray/Phylogeny_repo/phylogenetic_tree_software_with_matlab_wrappers/all_tests/all_results/our_code_all_files_ELKEBIR_synthetic_data_only_size_10_trees_29-Jul-2018_18_18_48.mat','all_our_code_outputs_new');
+    ourcode_output = load('/home/surjray/Phylogeny_repo/phylogenetic_tree_software_with_matlab_wrappers/all_tests/all_results/our_code_all_files_synthetic_data_top_20_size_7_10_date_09_march_2019_1pm.mat','all_our_code_outputs_top_k');
 	%ourcode_output_check = ourcode_output.all_our_code_outputs_new{file_count_id};
     ourcode_output_check = ourcode_output.all_our_code_outputs_top_k{file_count_id};
 	
@@ -144,7 +144,7 @@ for file_count_id = 1:90
     if (file_count_id ~= 35)
     
         % this identifies the file with number equal to file_count_id
-        path_to_sim_ances_tree_data = '/home/surjray/Dropbox/phylogenetic_tree_software_with_matlab_wrappers/all_tests/Sample_test_data/AncesTree_data/simulated/';
+        path_to_sim_ances_tree_data = '/home/surjray/Phylogeny_repo/phylogenetic_tree_software_with_matlab_wrappers/all_tests/Sample_test_data/AncesTree_data/simulated/';
         list_of_dirs = dir(path_to_sim_ances_tree_data);
         count = 0;
         found_flag = 0;
@@ -164,7 +164,7 @@ for file_count_id = 1:90
         end
 
         [true_tree_data] =  read_ground_truth_from_elkebir_data(ground_truth_file);
-        phyloWGS_output = load('/home/surjray/Dropbox/phylogenetic_tree_software_with_matlab_wrappers/all_tests/all_results/phyloWGS_all_files_except_35_ELKEBIR_simulated_data_28-Jul-2018_01_09_01','all_phylosub_outputs');
+        phyloWGS_output = load('/home/surjray/Phylogeny_repo/phylogenetic_tree_software_with_matlab_wrappers/all_tests/all_results/phyloWGS_all_files_except_35_ELKEBIR_simulated_data_28-Jul-2018_01_09_01','all_phylosub_outputs');
         phyloWGS_output = phyloWGS_output.all_phylosub_outputs{file_count_id};
 
         U1 = true_tree_data{3}';

@@ -1,8 +1,8 @@
-load('/home/surjray/Dropbox/phylogenetic_tree_software_with_matlab_wrappers/all_tests/all_results/our_code_on_real_data_tree_sizes_6_9_top_20_16-Apr-2019-20-52-36.mat','all_our_code_outputs');
-load('/home/surjray/Dropbox/phylogenetic_tree_software_with_matlab_wrappers/all_tests/all_results/ancestree_all_files_minus_a_few_ELKEBIR_real_data_17-Apr-2019_01_21_08.mat','all_ancestree_output');
-load('/home/surjray/Dropbox/phylogenetic_tree_software_with_matlab_wrappers/all_tests/all_results/phyloWGS_all_files_ELKEBIR_real_data_16-April-2019 18_27_30.mat','all_phylosub_outputs');
-load('/home/surjray/Dropbox/phylogenetic_tree_software_with_matlab_wrappers/all_tests/all_results/citup_all_files_ELKEBIR_real_data_17-Apr-2019_01_07_16.mat','all_citup_outputs');
-load('/home/surjray/Dropbox/phylogenetic_tree_software_with_matlab_wrappers/all_tests/all_results/all_canopy_outputs_on_real_Elkebir_data_24-Apr-2019.mat','all_canopy_outputs');
+load('/home/surjray/Phylogeny_repo/phylogenetic_tree_software_with_matlab_wrappers/all_tests/all_results/our_code_on_real_data_tree_sizes_6_9_top_20_16-Apr-2019-20-52-36.mat','all_our_code_outputs');
+load('/home/surjray/Phylogeny_repo/phylogenetic_tree_software_with_matlab_wrappers/all_tests/all_results/ancestree_all_files_minus_a_few_ELKEBIR_real_data_17-Apr-2019_01_21_08.mat','all_ancestree_output');
+load('/home/surjray/Phylogeny_repo/phylogenetic_tree_software_with_matlab_wrappers/all_tests/all_results/phyloWGS_all_files_ELKEBIR_real_data_16-April-2019 18_27_30.mat','all_phylosub_outputs');
+load('/home/surjray/Phylogeny_repo/phylogenetic_tree_software_with_matlab_wrappers/all_tests/all_results/citup_all_files_ELKEBIR_real_data_17-Apr-2019_01_07_16.mat','all_citup_outputs');
+load('/home/surjray/Phylogeny_repo/phylogenetic_tree_software_with_matlab_wrappers/all_tests/all_results/all_canopy_outputs_on_real_Elkebir_data_24-Apr-2019.mat','all_canopy_outputs');
 
 
 %% comparing all tools on Schuh et al predicted outputs
@@ -184,7 +184,7 @@ for i = 1:size(all_perms,1)
 		best_ix = i;
 	end
 end
-small_dist
-1-sum(sum(M_target < 0.0001))/(size(M_target,1)*size(M_target,2))
+disp(small_dist);
+disp(1 - sum(sum(M_target < 0.0001))/(size(M_target,1)*size(M_target,2)));
 end
 

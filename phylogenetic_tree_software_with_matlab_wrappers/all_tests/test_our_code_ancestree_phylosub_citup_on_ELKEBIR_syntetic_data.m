@@ -1,6 +1,6 @@
 %% add paths for different tools
 
-addpath(genpath('../our_GPU_code/'));
+addpath(genpath('../EXACT/'));
 addpath(genpath('../AncesTree-master/'));
 addpath(genpath('../citup-master'));
 addpath(genpath('../phylowgs-master'));
@@ -313,7 +313,7 @@ for folder_ix = 3: size(all_folders,1)
         
         %% run our code on the data
         
-        path_to_folder = [pwd_start, '/../our_GPU_code/distribution/'];
+        path_to_folder = [pwd_start, '/../EXACT/distribution/'];
         exec_name = 'b.out';
         cost_function = 'cost1';
         cpu_gpu = 'cpu_multithread';

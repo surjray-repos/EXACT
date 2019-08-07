@@ -8,7 +8,7 @@ for file_count_id = 1:90
     if (file_count_id ~= 35)
     
         % this identifies the file with number equal to file_count_id
-        path_to_sim_ances_tree_data = '/home/surjray/Dropbox/phylogenetic_tree_software_with_matlab_wrappers/all_tests/Sample_test_data/AncesTree_data/simulated/';
+        path_to_sim_ances_tree_data = '/home/surjray/Phylogeny_repo/phylogenetic_tree_software_with_matlab_wrappers/all_tests/Sample_test_data/AncesTree_data/simulated/';
         list_of_dirs = dir(path_to_sim_ances_tree_data);
         count = 0;
         found_flag = 0;
@@ -28,7 +28,7 @@ for file_count_id = 1:90
         end
 
         [true_tree_data] =  read_ground_truth_from_elkebir_data(ground_truth_file);
-        citup_output = load('/home/surjray/Dropbox/phylogenetic_tree_software_with_matlab_wrappers/all_tests/all_results/citup_all_files_ELKEBIR_simulated_data_28-Jul-2018_02_32_01','all_citup_outputs');
+        citup_output = load('/home/surjray/Phylogeny_repo/phylogenetic_tree_software_with_matlab_wrappers/all_tests/all_results/citup_all_files_ELKEBIR_simulated_data_28-Jul-2018_02_32_01','all_citup_outputs');
         citup_output = citup_output.all_citup_outputs{file_count_id};
 
 

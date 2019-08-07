@@ -4,8 +4,7 @@ function [true_tree_data] =  read_ground_truth_from_elkebir_data(input_file)
 
     fprintf( 'Opening the .true file provided in AncesTree simulated data\n' );
 
-    %file_name = ('/home/jbento/phylogenetic_tree_software_with_matlab_wrappers/AncesTree-master/data/simulated/Cov_50_Samples_6_Mut_100_Clone_10_PCR_Removed/sim_0.true');
-    file_name = input_file;
+	file_name = input_file;
     disp(file_name);
     fID_tree_tree_solution = fopen(file_name, 'r');
     disp(fID_tree_tree_solution);

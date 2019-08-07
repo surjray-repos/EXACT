@@ -1,3 +1,5 @@
+load('/home/surjray/Phylogeny_repo/phylogenetic_tree_software_with_matlab_wrappers/all_tests/all_results/our_code_on_real_data_tree_sizes_6_9_top_20_16-Apr-2019-20-52-36.mat','all_our_code_outputs');
+
 %%
 c = newline;
 clust_names = {['BCL2L13;',c],['COL24A1;',c],['DAZAP1;',c],['EXOC6B;',c],['GHDC;',c],['GPR158;',c],['HMCN1;',c],['KLHDC2;',c],['LRRC16A;',c],['MAP2K1;',c],['NAMPTL;',c],['NOD1;',c],['OCA2;',c],['PLA2G16;',c],['SAMHD1;',c],['SLC12A1;',c]};	

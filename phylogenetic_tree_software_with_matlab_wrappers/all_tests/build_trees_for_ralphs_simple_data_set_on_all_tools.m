@@ -14,7 +14,7 @@ input_file = '/home/surjray/Phylogeny_repo/phylogenetic_tree_software_with_matla
 
 figure;
 %% run our code
-base_folder = '/home/surjray/Phylogeny_repo/phylogenetic_tree_software_with_matlab_wrappers/our_GPU_code';
+base_folder = '/home/surjray/Phylogeny_repo/phylogenetic_tree_software_with_matlab_wrappers/EXACT';
 
 run([base_folder, '/distribution/cvx/cvx/cvx_setup']);
 

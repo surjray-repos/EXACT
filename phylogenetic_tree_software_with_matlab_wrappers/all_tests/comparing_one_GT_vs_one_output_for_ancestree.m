@@ -5,7 +5,7 @@ all_error_of_ancestry_relations = [ ];
 
 for file_count_id = 1:90
 
-    path_to_sim_ances_tree_data = '/home/surjray/Dropbox/phylogenetic_tree_software_with_matlab_wrappers/all_tests/Sample_test_data/AncesTree_data/simulated/';
+    path_to_sim_ances_tree_data = '/home/surjray/Phylogeny_repo/phylogenetic_tree_software_with_matlab_wrappers/all_tests/Sample_test_data/AncesTree_data/simulated/';
     list_of_dirs = dir(path_to_sim_ances_tree_data);
     count = 0;
     found_flag = 0;
@@ -26,7 +26,7 @@ for file_count_id = 1:90
 
 
     [true_tree_data] =  read_ground_truth_from_elkebir_data(ground_truth_file);
-    ancestree_output = load('/home/surjray/Dropbox/phylogenetic_tree_software_with_matlab_wrappers/all_tests/all_results/all_ancestree_outputs_on_synthetic_Elkebir_data_05-Jun-2018_14:08:10.mat','all_ancestree_outputs');
+    ancestree_output = load('/home/surjray/Phylogeny_repo/phylogenetic_tree_software_with_matlab_wrappers/all_tests/all_results/all_ancestree_outputs_on_synthetic_Elkebir_data_05-Jun-2018_14:08:10.mat','all_ancestree_outputs');
     ancestree_output = ancestree_output.all_ancestree_outputs{file_count_id};
 
     U1 = true_tree_data{3}';
