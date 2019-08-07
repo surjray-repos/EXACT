@@ -353,7 +353,7 @@ close all;
 
     fprintf( 'The current path is: %s\n', pwd );
     cd(wrapper_dir);
-    fprintf( 'The current path, after changing directory to CITUP root is: %s\n', pwd )
+    fprintf( 'The current path, after changing directory to PhyloWGS root is: %s\n', pwd )
     
     %removing all the directories and temporary files generated from this
     %run
