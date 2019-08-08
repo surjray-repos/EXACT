@@ -9,27 +9,27 @@ for file_count_id = 1:36
     
     switch alg_1
         case 1
-            output_1 = load('phyloWGS_all_files_ELKEBIR_real_data_16-April-2019 18_27_30.mat','all_phylosub_outputs');
+            output_1 = load('phyloWGS_all_files_ELKEBIR_real_data.mat','all_phylosub_outputs');
         case 2
-            output_1 = load('our_code_on_real_data_tree_sizes_6_9_top_20_16-Apr-2019 20_52_36.mat','all_our_code_outputs');
+            output_1 = load('our_code_on_real_data_tree_sizes_6_9_top_20.mat','all_our_code_outputs');
         case 3
-            output_1 = load('citup_all_files_ELKEBIR_real_data_17-Apr-2019 01_07_16.mat','all_citup_outputs');
+            output_1 = load('citup_all_files_ELKEBIR_real_data.mat','all_citup_outputs');
         case 4
-            output_1  = load('ancestree_all_files_minus_a_few_ELKEBIR_real_data_17-Apr-2019 01_21_08','all_ancestree_output');
+            output_1  = load('ancestree_all_files_minus_a_few_ELKEBIR_real_data.mat','all_ancestree_output');
         case 5
-            output_1  = load('all_canopy_outputs_on_real_Elkebir_data_24-Apr-2019.mat','all_canopy_outputs');
+            output_1  = load('all_canopy_outputs_on_real_Elkebir_data.mat','all_canopy_outputs');
     end
     switch alg_2
         case 1
-            output_2 = load('phyloWGS_all_files_ELKEBIR_real_data_16-April-2019 18_27_30.mat','all_phylosub_outputs');
+            output_2 = load('phyloWGS_all_files_ELKEBIR_real_data.mat','all_phylosub_outputs');
         case 2
-            output_2 = load('our_code_on_real_data_tree_sizes_6_9_top_20_16-Apr-2019 20_52_36.mat','all_our_code_outputs');
+            output_2 = load('our_code_on_real_data_tree_sizes_6_9_top_20.mat','all_our_code_outputs');
         case 3
-            output_2 = load('citup_all_files_ELKEBIR_real_data_17-Apr-2019 01_07_16.mat','all_citup_outputs');
+            output_2 = load('citup_all_files_ELKEBIR_real_data.mat','all_citup_outputs');
         case 4
-            output_2  = load('ancestree_all_files_minus_a_few_ELKEBIR_real_data_17-Apr-2019 01_21_08','all_ancestree_output');
+            output_2  = load('ancestree_all_files_minus_a_few_ELKEBIR_real_data.mat','all_ancestree_output');
         case 5
-            output_2  = load('all_canopy_outputs_on_real_Elkebir_data_24-Apr-2019.mat','all_canopy_outputs');
+            output_2  = load('all_canopy_outputs_on_real_Elkebir_data.mat','all_canopy_outputs');
     end
     
     switch alg_1

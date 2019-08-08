@@ -1,9 +1,9 @@
 %% add paths for different tools
 
 addpath(genpath('../EXACT/'));
-addpath(genpath('../AncesTree-master/'));
-addpath(genpath('../citup-master'));
-addpath(genpath('../phylowgs-master'));
+addpath(genpath('../AncesTree/'));
+addpath(genpath('../citup'));
+addpath(genpath('../phylowgs'));
 
 %% process all the files
 
@@ -54,8 +54,8 @@ for file_ix = 3: size(all_input_files_in_folder,1)
         alpha = 0.3; % if alpha is big, lots of things will be clustered together
         beta = 0.8; % to choose a larger beta we need more samples , i.e. larger T_samples
         gamma = 0.01; % small gamma means larger confidence on the data
-        wrapper_working_directory = [pwd_start, '/../AncesTree-master/distribution/'];
-        ancestree_executable_path = [pwd_start, '/../AncesTree-master/distribution/build/ancestree'];
+        wrapper_working_directory = [pwd_start, '/../AncesTree/distribution/'];
+        ancestree_executable_path = [pwd_start, '/../AncesTree/distribution/build/ancestree'];
         
         % call ancestree
         %ancestree_output = ancestree_wrapper_ll(F_from_SampleData, scale, alpha, beta, gamma, wrapper_working_directory, ancestree_executable_path);
@@ -72,8 +72,8 @@ for file_ix = 3: size(all_input_files_in_folder,1)
         
         %% run CITUP on data
         
-        wrapper_working_directory = [pwd_start,'/../citup-master/distribution/'];
-        CITUP_executable_path = [pwd_start,'/../citup-master/distribution/bin/'];
+        wrapper_working_directory = [pwd_start,'/../citup/distribution/'];
+        CITUP_executable_path = [pwd_start,'/../citup/distribution/bin/'];
         min_cluster_no = 5; % here we make the number of clusters be equal to the size of the input tree
         max_cluster_no = 9;
         %cluster_no = 8; % here we make the number of clusters be equal to the size of the input tree
@@ -100,8 +100,8 @@ for file_ix = 3: size(all_input_files_in_folder,1)
         %one = 1;
         mu_r = 0.999;
         mu_v = 0.5;
-        wrapper_working_directory = [pwd_start,'/../phylowgs-master/'];
-        phylowgs_executable_path = [pwd_start,'/../phylowgs-master/'];
+        wrapper_working_directory = [pwd_start,'/../phylowgs/'];
+        phylowgs_executable_path = [pwd_start,'/../phylowgs/'];
         
         if (ismember(3,tools_to_test))
             [phylowgs_output] = count_general_wrapper_PhyloWGS_allow_duplicates_ll(F_from_SampleData, scale, wrapper_working_directory, phylowgs_executable_path, mu_r, mu_v);
@@ -142,7 +142,7 @@ for file_ix = 3: size(all_input_files_in_folder,1)
 		%Here input_file will serve as the variable containing the full
 		%file name for the Ancestree input file
 		
-		path_to_folder = [pwd_start, '/../Canopy-master/demo_code/'];
+		path_to_folder = [pwd_start, '/../Canopy/demo_code/'];
 		
 		burnin_val = 10;
 		thin_val = 5;

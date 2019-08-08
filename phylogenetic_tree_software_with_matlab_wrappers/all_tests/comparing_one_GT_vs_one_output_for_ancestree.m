@@ -26,7 +26,7 @@ for file_count_id = 1:90
 
 
     [true_tree_data] =  read_ground_truth_from_elkebir_data(ground_truth_file);
-    ancestree_output = load('/home/surjray/Phylogeny_repo/phylogenetic_tree_software_with_matlab_wrappers/all_tests/all_results/all_ancestree_outputs_on_synthetic_Elkebir_data_05-Jun-2018_14:08:10.mat','all_ancestree_outputs');
+    ancestree_output = load('/home/surjray/Phylogeny_repo/phylogenetic_tree_software_with_matlab_wrappers/all_tests/all_results/all_ancestree_outputs_on_synthetic_Elkebir_data.mat','all_ancestree_outputs');
     ancestree_output = ancestree_output.all_ancestree_outputs{file_count_id};
 
     U1 = true_tree_data{3}';
