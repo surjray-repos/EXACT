@@ -14,3 +14,5 @@ develop EXACT: a tool that can explore the space of all possible phylogenetic tr
 exact inference under the PPM with noisy data. EXACT allows users to obtain not just the most-
 likely tree for some input data, but exact statistics about the distribution of trees that might explain
 the data. We show that EXACT outperforms several existing tools for this same task.
+
+EXACT is under constant development. As a result, some features might be temporarily unavailable.
