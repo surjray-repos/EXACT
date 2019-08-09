@@ -29,5 +29,14 @@ top_k_value = 20;
 [ourcode_output] = EXACT_wrapper_diff_tree_size(F_from_SampleData, error_rate, min_tree_size, max_tree_size, path_to_folder, exec_name, cpu_gpu, cost_function, top_k_value, GPU_id, num_CPU_cores, max_num_partitions, device_tree_subset_value, CUDA_threads_per_block, CUDA_blocks);
 
 % get output
+% ourcode_output is a matlab cell object having 7 components, namely, 
+% where
+%	ourcode_output{1} = likelihood score of the best tree as computed by the BIC criterion
+%	ourcode_output{2} = Bayesian information criteria score
+%	ourcode_output{3} = adjacency matrix for the best tree. This is a directed tree. If we can this matrix T, the U = inv(I - T), where U appears in the PPM model as F = UM.
+%	ourcode_output{4} = recovered (clean) frequencies of mutations
+%	ourcode_output{5} = clustered frequencies of mutants
+%	ourcode_output{6} = cluster membership information, the number in column 1 of each row designating which cluster/node each mutation (row number) belongs to.
+%	ourcode_output{7} = run time (in seconds) for the executable to infer the best tree among all trees of the same size while keeping track of all k_best trees
 Tree_Matrix_T = ourcode_output{3};
 Mutant_Frequencies_M = ourcode_output{4}; 

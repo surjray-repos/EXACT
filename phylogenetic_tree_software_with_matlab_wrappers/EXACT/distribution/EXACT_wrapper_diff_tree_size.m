@@ -28,7 +28,7 @@
 %	best_M{2} = Bayesian information criteria score
 %	best_M{3} = adjacency matrix for the best tree. This is a directed tree. If we can this matrix T, the U = inv(I - T), where U appears in the PPM model as F = UM.
 %	best_M{4} = recovered (clean) frequencies of mutations
-%	best_M{5} = clustered frequencies of mutations
+%	best_M{5} = clustered frequencies of mutants
 %	best_M{6} = cluster membership information, the number in column 1 of each row designating which cluster/node each mutation (row number) belongs to.
 %	best_M{7} = run time (in seconds) for the executable to infer the best tree among all trees of the same size while keeping track of all k_best trees
 % best_bic = best_M{2}

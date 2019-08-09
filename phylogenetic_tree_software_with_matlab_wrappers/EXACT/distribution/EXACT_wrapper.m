@@ -1,23 +1,22 @@
 %% this is a matlab wrapper for transforming the F_reduced matrix to our GPU code format
 % and calling the EXACT executable to infer phylogenetic trees
 % INPUTS:
-% F_reduced = matrix with frequency of mutation values, each row is a
-%mutated position, each column is a sample or time-point.
+% F_reduced = matrix with frequency of mutation values, each row is associated with a mutated position, each column is associated with a sample. 
 % path_to_folder = path to folder where EXACT will create temporary files
 % exec_name = name of the compiled EXACT executable
-% cpu_gpu = architecture: possible options: cpu, cpu_multithread, gpu
-% cost = cost function to measure each tree: possible options: cost1, cost2, cost3, cost4
+% cpu_gpu = computing architecture to use. Possible options: "cpu" (use single CPU core), "cpu_multithread" (use multiple CPU cores), "gpu" (use GPU)
+% cost = likelihood function to score each tree: possible options: "cost1", "cost2", "cost3", "cost4".
 % k_best = how many top k best trees we want as output
 % gpu_id = ID of the GPU to use, if gpu architecture was chosen
-% cpu_cores = number of CPU cores if multithreading was chosen
-% num_devices = number of partitions of the tree space for multithreading/parallelism
-% tree_subset = Which particular subset of the tree space gets assigned to
-%this particular device we are running on, in a parallel, workload, related to num_devices partitions above.
-% CUDA_thread_block = number of CUDA threads per block we want if using a NVIDIA CUDA GPU
-% CUDA_blocks = number of CUDA thread blocks we want if using a NVIDIA CUDA GPU
+% cpu_cores = number of CPU cores to use if multithreading was chosen
+% to explore multiple CPUs, or GPUs, even on different computers, the wrapper allows us to specify which portion of the space of all possible tree the current call is going to explore. This is controlled using num_devices and tree_subset
+% num_devices = specifies in how many equal parts the space number of possible trees is being divided by
+% tree_subset = which particular subset of the tree space gets will be explored by the current function call.
+% CUDA_thread_block = number of CUDA threads per block, if gpu architecture was chosen
+% CUDA_blocks = number of CUDA thread blocks, if gpu architecture was chosen
 % OUTPUTS:
-% M contains top_k_trees_sol_cell or cells with the tree/s and associated tree cost for the output tree/s 
-%	M.tree = ancestry matrix for a solution tree
+% M contains structures with the k_best tree/s and associated tree cost/s for the output tree/s 
+%	M.tree = adjacency matrix for the best tree. This is a directed tree. If we can this matrix T, the U = inv(I - T), where U appears in the PPM model as F = UM.
 %	M.val = cost of the solution tree
 % runtime_bruteForce = run time (in seconds) for the executable to infer this tree
 
