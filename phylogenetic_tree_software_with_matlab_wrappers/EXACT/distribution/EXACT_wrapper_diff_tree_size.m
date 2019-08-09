@@ -1,5 +1,6 @@
-%% Wrapper to test our code with large data fro El.Kebir simulated+real F matrices
+%% Wrapper to test our code with large data fro El.Kebir simulated + real F matrices
 % with k-means clustering and checking against cvx value
+% Calls EXACT_wrapper.m with different tree sizes
 
 % this adds a row of ones to the input
 % the cluster index starts at 1, which is a virtual root.
