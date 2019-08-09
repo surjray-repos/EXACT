@@ -314,7 +314,7 @@ for folder_ix = 3: size(all_folders,1)
         %% run our code on the data
         
         path_to_folder = [pwd_start, '/../EXACT/distribution/'];
-        exec_name = 'b.out';
+        exec_name = 'EXACT_executable_x64_CUDA.out';
         cost_function = 'cost1';
         cpu_gpu = 'cpu_multithread';
         GPU_id = 0;
