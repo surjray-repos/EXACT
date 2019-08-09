@@ -459,7 +459,7 @@ __host__ __device__ void bfs_array_to_fixed(shortint start_ind, shortint status[
 }
 
 /*
- This function uses BFS to find nodes up to fixed nodes (inlcuding effective nodes), sore found branch nodes in branch_stack[], and store found fixed nodes (and effective nodes) in fixed_stack[]:
+ This function uses BFS to find nodes up to fixed nodes (inlcuding effective nodes), store found branch nodes in branch_stack[], and store found fixed nodes (and effective nodes) in fixed_stack[]:
  */
 __host__ __device__ void bfs_array_to_fixed_effective(shortint start_ind, shortint status[], shortint num_kids[], shortint kids[], shortint branch_stack[], shortint *branch_stack_back, shortint *branch_stack_size, shortint fixed_stack[], shortint *fixed_stack_back, shortint *fixed_stack_size) {
     shortint queue[MAX_N_NODES + 1];
@@ -529,7 +529,7 @@ __host__ __device__ void bfs_array_unstretched(shortint status[], shortint level
 }
 
 /*
- This function check wether the node at node_ind is a branch node or not
+ This function check whether the node at node_ind is a branch node or not
  */
 __host__ __device__ shortint is_branch_array(shortint node_ind, shortint status[], shortint father[], shortint num_kids[], shortint kids[], shortint dim) {
     if (status[node_ind] == 2) {
@@ -560,7 +560,7 @@ __host__ __device__ shortint is_branch_array(shortint node_ind, shortint status[
 }
 
 /*
- This function implement the compression procedure starting with a branching node at branch_ind, create and store the data of a new effective node (associated with this branch node) from compressing:
+ This function implements the compression procedure starting with a branching node at branch_ind, create and store the data of a new effective node (associated with this branch node) from compressing:
  */
 __host__ __device__ void compress_array(shortint branch_ind, realnumber value[], realnumber z[], shortint status[], shortint level[], shortint father[], shortint num_kids[], shortint kids[], shortint seen_fixed[], shortint holder[], shortint *holder_front, shortint *holder_back, shortint *holder_size, shortint *eff_ind) {
     ++(*eff_ind);
@@ -628,7 +628,7 @@ __host__ __device__ void compress_array(shortint branch_ind, realnumber value[],
 }
 
 /*
- This function update positions z[] AND speeds v[] at a given t:
+ This function updates positions z[] AND speeds v[] at a given t:
  */
 __host__ __device__ void update_z_array(realnumber t, realnumber v[], shortint fixed_queue[], shortint *fixed_queue_front, shortint *fixed_queue_back, shortint *fixed_queue_size, realnumber value[], realnumber z[], shortint status[], shortint level[], shortint father[], shortint num_kids[], shortint kids[], shortint dim) {
     shortint seen[MAX_N_NODES + 1] = {0};
@@ -844,7 +844,7 @@ __host__ __device__ void update_z_array(realnumber t, realnumber v[], shortint f
 }
 
 /*
- This function compute the next turing point, then the next node to be fixed and store its index in t_data[1]:
+ This function computes the next turing point, then the next node to be fixed and store its index in t_data[1]:
  */
 __host__ __device__ void next_turn_array(realnumber t_data[], realnumber t_pre, realnumber z_pre[], realnumber v[], realnumber value[], shortint status[], shortint level[], shortint dim) {
     v[0] = 0;
@@ -3057,6 +3057,7 @@ __host__ __device__ void prufer_tree(edge *tree, shortint *degrees, shortint *co
 // degrees is a scrap memory position. in the end it will not contain anything useful
 // regarding this function the permutation_array will also be scrap memory
 // note that none of the arrays needs to be pre-initialized to any values. only the memory needs to be available
+// adapted from the Martin Broadhurst method
 __host__ __device__ void generate_tree_from_index(shortint num_tree_vertices, longint tree_index, shortint *permutation_array,  shortint *degrees, edge *tree, shortint *adjacency_mat , shortint * final_degrees, shortint *adj_list)
 {
     // General purpose counters
