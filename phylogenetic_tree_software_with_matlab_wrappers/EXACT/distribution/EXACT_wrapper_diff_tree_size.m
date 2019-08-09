@@ -1,7 +1,6 @@
 %% Matlab wrapper for EXACT
 % Calls EXACT_wrapper.m
 
-
 % INPUTS:
 % F_reduced = matrix with frequency of mutation values, each row is associated with a mutated position, each column is associated with a sample. 
 % error_rate = 0.5 * sqrt (estimated variance of the samples)
@@ -23,16 +22,16 @@
 % CUDA_thread_block = number of CUDA threads per block, if gpu architecture was chosen
 % CUDA_blocks = number of CUDA thread blocks, if gpu architecture was chosen
 % OUTPUTS:
-% best_M is a matlab cell object with 6 components, namely, 
+% best_M is a matlab cell object, with k_best cells (indexed by sol_id here), each cell having 7 components, namely, 
 % where
-%	best_M{1} = likelihood score of the best tree as computed by the BIC criterion
-%	best_M{2}  = Bayesian information criteria score
-%	M_tmp{sol_id}.tree = ancestry matrix for the best tree
-%	Mut_freqs = calculated mutation frequency values from cvx
-%	F_clust = clustered frequency values 
-%	clusters_ix = cluster membership information, which cluster/node each mutation belongs to
-%	run_time = run time (in seconds) for the executable to infer this tree
-% best_bic = best bic value determining the best tree
+%	best_M{sol_id}{1} = likelihood score of the best tree as computed by the BIC criterion
+%	best_M{sol_id}{2} = Bayesian information criteria score
+%	best_M{sol_id}{3} = ancestry matrix for the best tree
+%	best_M{sol_id}{4} = calculated mutation frequency values from cvx
+%	best_M{sol_id}{5} = clustered frequency values 
+%	best_M{sol_id}{6} = cluster membership information, which cluster/node each mutation belongs to
+%	best_M{sol_id}{7} = run time (in seconds) for the executable to infer this tree
+% best_bic = best bic value determining the best tree (with the highest likelihood)
 % all_Ms = storing the {M_tmp{sol_id}.val, bic, M_tmp{sol_id}.tree, Mut_freqs, F_clust, clusters_ix, run_time} structure 
 % for all the output solution trees for different sizes.
 
