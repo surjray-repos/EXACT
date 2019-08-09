@@ -11,7 +11,7 @@ input_file = '/home/surjray/Phylogeny_repo/phylogenetic_tree_software_with_matla
 
 % parameters
 path_to_folder = [pwd, '/distribution/'];
-exec_name = 'b.out';
+exec_name = 'EXACT_executable_x64_CUDA.out';
 cost_function = 'cost1'; %possible options: cost1, cost2, cost3, cost4
 cpu_gpu = 'cpu_multithread'; %possible options: cpu, cpu_multithread, gpu
 GPU_id = 0;
