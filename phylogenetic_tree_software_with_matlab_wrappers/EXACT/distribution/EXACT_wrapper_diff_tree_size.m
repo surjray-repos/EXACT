@@ -11,8 +11,8 @@
 % cost = likelihood function to score each tree: possible options: "cost1", "cost2", "cost3", "cost4".
 % In "cost1" we minimize | F_hat - F |_frobenious subject to F = UM, M >= 0 sum(M) == 1
 % In "cost2" we minimize | U^-1 F_hat - M |_frobenious subject to M >= 0 sum(M) == 1
-% In "cost3" we minimize | F_hat - F |_frobenious subject to F = UM, M >= 0 sum(M) <= 1
-% In "cost4" we minimize | U^-1 F_hat - M |_frobenious subject to M >= 0 sum(M) <= 1
+% In "cost3" we minimize | F_hat - F |_frobenious subject to F = UM, M >= 0 sum(M) <= 1 XXX
+% In "cost4" we minimize | U^-1 F_hat - M |_frobenious subject to M >= 0 sum(M) <= 1 XXX
 % k_best = how many top k best trees we want as output
 % gpu_id = ID of the GPU to use, if gpu architecture was chosen
 % cpu_cores = number of CPU cores to use if multithreading was chosen
@@ -22,17 +22,28 @@
 % CUDA_thread_block = number of CUDA threads per block, if gpu architecture was chosen
 % CUDA_blocks = number of CUDA thread blocks, if gpu architecture was chosen
 % OUTPUTS:
-% best_M is a matlab cell object, with k_best cells (indexed by sol_id here), each cell having 7 components, namely, 
+% best_M is a matlab cell object having 7 components, namely, 
 % where
-%	best_M{sol_id}{1} = likelihood score of the best tree as computed by the BIC criterion
-%	best_M{sol_id}{2} = Bayesian information criteria score
-%	best_M{sol_id}{3} = ancestry matrix for the best tree
-%	best_M{sol_id}{4} = calculated mutation frequency values from cvx
-%	best_M{sol_id}{5} = clustered frequency values 
-%	best_M{sol_id}{6} = cluster membership information, which cluster/node each mutation belongs to
-%	best_M{sol_id}{7} = run time (in seconds) for the executable to infer this tree
-% best_bic = best bic value determining the best tree (with the highest likelihood)
-% all_Ms = storing the {M_tmp{sol_id}.val, bic, M_tmp{sol_id}.tree, Mut_freqs, F_clust, clusters_ix, run_time} structure 
+%	best_M{1}{1} = likelihood score of the best tree as computed by the BIC criterion
+%	best_M{1}{2} = Bayesian information criteria score
+%	best_M{1}{3} = adjacancy matrix for the best tree. This is a directed tree. If we can this matrix T, the U = inv(I - T), where U appears in the PPM model as F = UM.
+%	best_M{1}{4} = recovered (clean) frequencies of mutations
+%	best_M{1}{5} = clustered frequencies of mutations
+%	best_M{1}{6} = cluster membership information, XXXX which cluster/node each mutation belongs to
+%	best_M{1}{7} = run time (in seconds) for the executable to infer the best tree among all trees of the same size while keeping track of all k_best trees
+% best_bic = est_M{sol_id}{2}
+% all_Ms is a matlab cell object with k_best cells (indexed by sol_id here), each cell storing 
+%	all_Ms{sol_id}{1} = likelihood score of the sold_id tree
+%	all_Ms{sol_id}{2} = Bayesian information criteria score
+%	all_Ms{sol_id}{3} = adjacancy matrix for the sold_id tree. This is a directed tree. If we can this matrix T, the U = inv(I - T), where U appears in the PPM model as F = UM.
+%	all_Ms{sol_id}{4} = recovered (clean) frequencies of mutations
+%	all_Ms{sol_id}{5} = clustered frequencies of mutations
+%	all_Ms{sol_id}{6} = cluster membership information, XXXX which cluster/node each mutation belongs to
+%	all_Ms{sol_id}{7} = run time (in seconds) for the executable to infer the sold_id tree among all trees of the same size while keeping track of all k_best trees
+
+
+
+%{all_Ms{sol_id}{1}, bic, all_Ms{sol_id}.tree, Mut_freqs, F_clust, clusters_ix, run_time} structure 
 % for all the output solution trees for different sizes.
 
 function [best_M, best_bic, all_Ms] = EXACT_wrapper_diff_tree_size(F_reduced, error_rate, min_tree_size, max_tree_size, path_to_folder, exec_name, cpu_gpu, cost, k_best, gpu_id, cpu_cores, num_devices, tree_subset, CUDA_thread_block, CUDA_blocks )
