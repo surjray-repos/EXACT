@@ -1,34 +1,32 @@
-%% Wrapper to test our code with large data fro El.Kebir simulated + real F matrices
-% with k-means clustering and checking against cvx value
-% Calls EXACT_wrapper.m with different tree sizes
+%% Matlab wrapper for EXACT
+% Calls EXACT_wrapper.m
 
-% this adds a row of ones to the input
-% the cluster index starts at 1, which is a virtual root.
-% all the real data gets clustered into nodes 2 to tree_size in the virtual root
 
 % INPUTS:
-% F_reduced = matrix with frequency of mutation values, each row is a
-%mutated position, each column is a sample or time-point.
-% error_rate = error rate to calculate likelihood for BIC 
-% min_tree_size, max_tree_size = minimum and maximum size, respectively, of
-%inferred tree that we want. Determines number of clusters.
-% path_to_folder = path to folder where EXACT will create temporary files
+% F_reduced = matrix with frequency of mutation values, each row is associated with a mutated position, each column is associated with a sample. 
+% error_rate = 0.5 * sqrt (estimated variance of the samples)
+% min_tree_size, max_tree_size = minimum and maximum tree size to explore during inference
+% path_to_folder = path to the folder where EXACT will create temporary files
 % exec_name = name of the compiled EXACT executable
-% cpu_gpu = architecture: possible options: cpu, cpu_multithread, gpu
-% cost = cost function to measure each tree: possible options: cost1, cost2, cost3, cost4
+% cpu_gpu = computing architecture to use. Possible options: "cpu" (use single CPU core), "cpu_multithread" (use multiple CPU cores), "gpu" (use GPU)
+% cost = likelihood function to score each tree: possible options: "cost1", "cost2", "cost3", "cost4".
+% In "cost1" we minimize | F_hat - F |_frobenious subject to F = UM, M >= 0 sum(M) == 1
+% In "cost2" we minimize | U^-1 F_hat - M |_frobenious subject to M >= 0 sum(M) == 1
+% In "cost3" we minimize | F_hat - F |_frobenious subject to F = UM, M >= 0 sum(M) <= 1
+% In "cost4" we minimize | U^-1 F_hat - M |_frobenious subject to M >= 0 sum(M) <= 1
 % k_best = how many top k best trees we want as output
 % gpu_id = ID of the GPU to use, if gpu architecture was chosen
-% cpu_cores = number of CPU cores if multithreading was chosen
-% num_devices = number of partitions of the tree space for multithreading/parallelism
-% tree_subset = Which particular subset of the tree space gets assigned to
-%this particular device we are running on, in a parallel, workload, related to num_devices partitions above.
-% CUDA_thread_block = number of CUDA threads per block we want if using a NVIDIA CUDA GPU
-% CUDA_blocks = number of CUDA thread blocks we want if using a NVIDIA CUDA GPU
+% cpu_cores = number of CPU cores to use if multithreading was chosen
+% to explore multiple CPUs, or GPUs, even on different computers, the wrapper allows us to specify which portion of the space of all possible tree the current call is going to explore. This is controlled using num_devices and tree_subset
+% num_devices = specifies in how many equal parts the space number of possible trees is being divided by
+% tree_subset = which particular subset of the tree space gets will be explored by the current function call.
+% CUDA_thread_block = number of CUDA threads per block, if gpu architecture was chosen
+% CUDA_blocks = number of CUDA thread blocks, if gpu architecture was chosen
 % OUTPUTS:
-% best_M is {M_tmp{sol_id}.val, bic, M_tmp{sol_id}.tree, Mut_freqs, F_clust, clusters_ix, run_time} 
-%contains the tree and cluster information for the tree with the best BIC score 
-%	{M_tmp{sol_id}.val = cost of the best tree
-%	bic = Bayesian information criteria score
+% best_M is a matlab cell object with 6 components, namely, 
+% where
+%	best_M{1} = likelihood score of the best tree as computed by the BIC criterion
+%	best_M{2}  = Bayesian information criteria score
 %	M_tmp{sol_id}.tree = ancestry matrix for the best tree
 %	Mut_freqs = calculated mutation frequency values from cvx
 %	F_clust = clustered frequency values 
