@@ -1,3 +1,5 @@
+%% Matlab wrapper for AncesTree
+
 function [M] = ancestree_wrapper(F_reduced, scale, alpha, beta, gamma, wrapper_dir, pathtoprogram )
 
     starting_directory = pwd;
