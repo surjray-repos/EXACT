@@ -12,6 +12,12 @@ addpath('../../all_tests/');
 input_file = '/home/surjray/Phylogeny_repo/phylogenetic_tree_software_with_matlab_wrappers/all_tests/Sample_test_data/AncesTree_data/simulated/Cov_1000_Samples_6_Mut_100_Clone_10_PCR_Removed/sim_4.input';
 [F_from_SampleData, scaling] =  transform_elkebir_input_data_into_F_matrix(input_file);
 
+% load groud truth
+ground_truth_file = '/home/surjray/Phylogeny_repo/phylogenetic_tree_software_with_matlab_wrappers/all_tests/Sample_test_data/AncesTree_data/simulated/Cov_1000_Samples_6_Mut_100_Clone_10_PCR_Removed/sim_4.true';
+[true_tree_data] =  read_ground_truth_from_elkebir_data(ground_truth_file);
+Ugt = true_tree_data{3}';
+clustgt = true_tree_data{5};
+
 
 % parameters
 path_to_folder = [pwd, '/distribution/'];
@@ -48,61 +54,7 @@ Mutant_Frequencies_M = ourcode_output{4};
 U = inv(eye(size(ourcode_output{3})) - ourcode_output{3});
 clust = [ [1: length(ourcode_output{6})]' , ourcode_output{6}];
 
-% build tree labels from the cluster information
-nodelbs = cell(1,length(U));
-for i = 1:length(U)
-	nodelbs{i} = num2str(clust(clust(:,2)==i,1)');
-end
+generate_joint_plot_of_tree_donut_muller_and_errors(U,clust, Mutant_Frequencies_M,  Ugt, clustgt);
 
-% compute colors for each mutant
-node_col = cell(1,length(U));
-cum_nodelbs = cell(1,length(U));
-for i = 1:length(U)
-	for j = find(U(:,i))'
-		cum_nodelbs{i} = [cum_nodelbs{i}, ' ', nodelbs{j}];
-	end
-	array_rep = [0, sort(str2num(cum_nodelbs{i}))];
-	colormap_array = colormap(colorcube);
-	
-	rng(mod(  sum(((length(clust)).^[1:length(array_rep)]).*array_rep )    ,(2^32)-1)); % use a simple hash to generate a seed to then generate a random color for each mutant
-	clrix = randi(64);
-	node_col{i} = colormap_array(clrix,:); 
-	cum_nodelbs{i} = num2str(sort(str2num(cum_nodelbs{i})));
-end
-%% Tree diagram with information about which nodes contain which mutations
-figure;
-subplot(1,3,1);
-h = plot(digraph( eye(length(U)) - inv(U) ));
-labelnode(h,[1:length(U)],nodelbs);
-highlight(h,[1:length(U)],'MarkerSize',20);
-for i = 1:length(U)
-	highlight(h,i,'NodeColor',node_col{i});
-end
-set(gca,'visible','off');
-%% draw donut plot with mutant mixing ratios
-subplot(1,3,2);
-[~, lgd] = donut(Mutant_Frequencies_M(:,1:5)', cum_nodelbs, node_col);
-set(lgd,'visible','off');
-set(gca,'visible','off');
+%% generate a list of top 10 trees
 
-%% assuming that the different samples are obtained in time, we can draw a muller plot
-subplot(1,3,3);
-[~, lgd] = generate_simple_muller_plots(U, Mutant_Frequencies_M, cum_nodelbs, node_col);
-set(lgd,'visible','off');
-set(gca,'visible','off');
-
-%% compute four different error types between synthetic data ground truth and EXACT inferred tree
-%See section 4.1 in paper
-ground_truth_file = '/home/surjray/Phylogeny_repo/phylogenetic_tree_software_with_matlab_wrappers/all_tests/Sample_test_data/AncesTree_data/simulated/Cov_1000_Samples_6_Mut_100_Clone_10_PCR_Removed/sim_4.true';
-[true_tree_data] =  read_ground_truth_from_elkebir_data(ground_truth_file);
-U1 = true_tree_data{3}';
-clust1 = true_tree_data{5};
-
-U2 = U;
-clust2 = clust;
-
-%Calculate the 4 different error types 
-[error_rates_EXACT] = compare_trees_using_U_matrices_and_clustering(U1, clust1, U2, clust2);
-figure;
-bar(error_rates_EXACT);
-set(gca, 'xticklabel', {'error1', 'error2', 'error3', 'error4'});
