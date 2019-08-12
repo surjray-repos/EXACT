@@ -8,7 +8,8 @@
 % path_to_folder = path to the folder where EXACT will create temporary files
 
 % OUTPUTS:
-% M contains structures with the k_best tree/s and associated tree cost/s for the output tree/s 
+% M contains structures with the output trees and cluster information, mutant frequencies and calculated F values
+% 
 
 function [M] = ancestree_wrapper(F_reduced, scale, alpha, beta, gamma, wrapper_dir, pathtoprogram )
 
