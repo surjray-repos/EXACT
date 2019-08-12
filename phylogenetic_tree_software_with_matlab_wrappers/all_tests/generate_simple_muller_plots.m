@@ -1,4 +1,6 @@
-function h = generate_simple_muller_plots(U,M,cum_nodelbs,node_col)
+%% Copyright (c) 2019 Surjyendu Ray 
+
+function [h,lgd] = generate_simple_muller_plots(U,M,cum_nodelbs,node_col)
 
 % get sizes
 num_clust = size(M,1);
@@ -51,8 +53,6 @@ cvx_begin quiet
 	
 cvx_end
 
-%figure;
-% do the filling
 order_of_visit = bfsearch(digraph(T),1); %
 hold on;
 for curve_ix = order_of_visit'
@@ -60,6 +60,6 @@ for curve_ix = order_of_visit'
 	h = shade(x,Lw(curve_ix,:),x,Up(curve_ix,:),'FillType',[1 2;2 1],'FillColor',node_col{curve_ix},'LineStyle','none','FillAlpha',1);
 	r(curve_ix) = plot(NaN,NaN,'Color',node_col{curve_ix});
 end
-	legend(r, cum_nodelbs);
+	lgd = legend(r, cum_nodelbs);
 hold off;
 
