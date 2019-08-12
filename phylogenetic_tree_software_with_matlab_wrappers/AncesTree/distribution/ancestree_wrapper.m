@@ -1,5 +1,15 @@
 %% Matlab wrapper for AncesTree
 
+% INPUTS:
+% F_reduced = matrix with frequency of mutation values, each row is associated with a mutated position, each column is associated with a sample. 
+% scale = multiplying factor to transform the mutation frequencies back to read counts i.e. read counts = F_reduced * scale
+
+% path_to_folder = path to the folder where EXACT will create temporary files
+% path_to_folder = path to the folder where EXACT will create temporary files
+
+% OUTPUTS:
+% M contains structures with the k_best tree/s and associated tree cost/s for the output tree/s 
+
 function [M] = ancestree_wrapper(F_reduced, scale, alpha, beta, gamma, wrapper_dir, pathtoprogram )
 
     starting_directory = pwd;
