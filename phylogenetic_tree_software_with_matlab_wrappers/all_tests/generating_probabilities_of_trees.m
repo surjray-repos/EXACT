@@ -1,4 +1,4 @@
-load('/home/surjray/Phylogeny_repo/phylogenetic_tree_software_with_matlab_wrappers/all_tests/all_results/our_code_on_real_data_tree_sizes_6_9_top_20.mat','all_our_code_outputs');
+load('/home/surjray/Phylogeny_repo/phylogenetic_tree_software_with_matlab_wrappers/all_tests/all_results/our_code_on_real_data_tree_sizes_6_to_10_top_100trees.mat','all_our_code_outputs');
 
 %%
 c = newline;
