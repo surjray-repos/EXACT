@@ -105,4 +105,4 @@ clust2 = clust;
 [error_rates_EXACT] = compare_trees_using_U_matrices_and_clustering(U1, clust1, U2, clust2);
 figure;
 bar(error_rates_EXACT);
-set(gca, 'xticklabel', {'error1', 'error2', 'error3', 'error4'})
+set(gca, 'xticklabel', {'error1', 'error2', 'error3', 'error4'});
