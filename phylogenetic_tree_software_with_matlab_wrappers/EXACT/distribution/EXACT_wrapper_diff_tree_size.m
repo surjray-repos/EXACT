@@ -16,9 +16,11 @@
 % k_best = how many top k best trees we want as output
 % gpu_id = ID of the GPU to use, if gpu architecture was chosen
 % cpu_cores = number of CPU cores to use if multithreading was chosen
-% to explore multiple CPUs, or GPUs, even on different computers, the wrapper allows us to specify which portion of the space of all possible tree the current call is going to explore. This is controlled using num_devices and tree_subset
+% To explore multiple CPUs, or GPUs, even on different computers, the wrapper allows us to specify which portion of the space of all possible tree the current function call is going to explore.
+% This is controlled using the parameters num_devices and tree_subset
 % num_devices = specifies in how many equal parts the space number of possible trees is being divided by
 % tree_subset = which particular subset of the tree space gets will be explored by the current function call.
+% So, for example, if num_devices = 6 and tree_subset = 4, then the current calling function will scan all of the trees in the 4th subset of the partion of the space into 6 equal parts.
 % CUDA_thread_block = number of CUDA threads per block, if gpu architecture was chosen
 % CUDA_blocks = number of CUDA thread blocks, if gpu architecture was chosen
 % OUTPUTS:
@@ -26,19 +28,19 @@
 % where
 %	best_M{1} = likelihood score of the best tree as computed by the BIC criterion
 %	best_M{2} = Bayesian information criteria score
-%	best_M{3} = adjacency matrix for the best tree. This is a directed tree. If we can this matrix T, the U = inv(I - T), where U appears in the PPM model as F = UM.
+%	best_M{3} = adjacency matrix for the best tree. This is a directed tree. If we call this matrix T, the U = inv(I - T), where U appears in the PPM model as F = UM.
 %	best_M{4} = recovered (clean) frequencies of mutations
 %	best_M{5} = clustered frequencies of mutants
-%	best_M{6} = cluster membership information, the number in column 1 of each row designating which cluster/node each mutation (row number) belongs to.
+%	best_M{6} = cluster membership information. Array where the ith element indicates the cluster ID to which the ith mutation belongs to.
 %	best_M{7} = run time (in seconds) for the executable to infer the best tree among all trees of the same size while keeping track of all k_best trees
 % best_bic = best_M{2}
-% all_Ms is a matlab cell object with k_best cells (indexed by sol_id here), each cell storing 
+% all_Ms is a matlab cell object with k_best cells (indexed by sol_id), each cell storing 
 %	all_Ms{sol_id}{1} = likelihood score of the sold_id tree
 %	all_Ms{sol_id}{2} = Bayesian information criteria score
 %	all_Ms{sol_id}{3} = adjacency matrix for the sold_id tree. This is a directed tree. If we can this matrix T, the U = inv(I - T), where U appears in the PPM model as F = UM.
 %	all_Ms{sol_id}{4} = recovered (clean) frequencies of mutations
 %	all_Ms{sol_id}{5} = clustered frequencies of mutations
-%	all_Ms{sol_id}{6} = cluster membership information, the number in column 1 of each row designating which cluster/node each mutation (row number) belongs to.
+%	all_Ms{sol_id}{6} = cluster membership information. Array where the ith element indicates the cluster ID to which the ith mutation belongs to.
 %	all_Ms{sol_id}{7} = run time (in seconds) for the executable to infer the sold_id tree among all trees of the same size while keeping track of all k_best trees
 
 
