@@ -18,7 +18,6 @@ ground_truth_file = '/home/surjray/Phylogeny_repo/phylogenetic_tree_software_wit
 Ugt = true_tree_data{3}';
 clustgt = true_tree_data{5};
 
-
 % parameters
 path_to_folder = [pwd, '/distribution/'];
 exec_name = 'EXACT_executable_x64_CUDA.out';
@@ -36,25 +35,63 @@ CUDA_blocks = 128;
 top_k_value = 20;
 
 % run EXACT
-[ourcode_output] = EXACT_wrapper_diff_tree_size(F_from_SampleData, error_rate, min_tree_size, max_tree_size, path_to_folder, exec_name, cpu_gpu, cost_function, top_k_value, GPU_id, num_CPU_cores, max_num_partitions, device_tree_subset_value, CUDA_threads_per_block, CUDA_blocks);
+[ourcode_output, ~, ourcode_all_Ms] = EXACT_wrapper_diff_tree_size(F_from_SampleData, error_rate, min_tree_size, max_tree_size, path_to_folder, exec_name, cpu_gpu, cost_function, top_k_value, GPU_id, num_CPU_cores, max_num_partitions, device_tree_subset_value, CUDA_threads_per_block, CUDA_blocks);
 
-% get output
-% ourcode_output is a matlab cell object having 7 components, namely, 
-% where
-%	ourcode_output{1} = likelihood score of the best tree as computed by the BIC criterion
-%	ourcode_output{2} = Bayesian information criteria score
-%	ourcode_output{3} = adjacency matrix for the best tree. This is a directed tree. If we can this matrix T, the U = inv(I - T), where U appears in the PPM model as F = UM.
-%	ourcode_output{4} = recovered (clean) frequencies of mutations
-%	ourcode_output{5} = clustered frequencies of mutants
-%	ourcode_output{6} = cluster membership information, the number in column 1 of each row designating which cluster/node each mutation (row number) belongs to.
-%	ourcode_output{7} = run time (in seconds) for the executable to infer the best tree among all trees of the same size while keeping track of all k_best trees
 Tree_Matrix_T = ourcode_output{3};
 Mutant_Frequencies_M = ourcode_output{4}; 
 
 U = inv(eye(size(ourcode_output{3})) - ourcode_output{3});
 clust = [ [1: length(ourcode_output{6})]' , ourcode_output{6}];
 
-generate_joint_plot_of_tree_donut_muller_and_errors(U,clust, Mutant_Frequencies_M,  Ugt, clustgt);
+% generate figure with best tree, mutant frequencies, and errors to ground truth
+generate_joint_plot_of_tree_donut_muller_and_errors(U, clust, Mutant_Frequencies_M,  Ugt, clustgt);
 
-%% generate a list of top 10 trees
+% generate a list of top 10 trees ranked by their probabilities according to our assumed model
 
+%%
+figure;
+
+tree_probs = [];
+sorted_ids = nan(top_k_value, 1 + max_tree_size - min_tree_size);
+sorted_vals = nan(top_k_value, 1 + max_tree_size - min_tree_size);
+
+for j = 1:1 + max_tree_size - min_tree_size
+	for i = 1:top_k_value
+		sorted_vals(i,j) = ourcode_all_Ms{j}{i}{1};
+	end
+	[sorted_vals(:,j), sorted_ids(:,j)] = sort(sorted_vals(:,j));
+end
+
+for t = 1:10 % this will show us the top 10 trees
+	best_size = size(ourcode_output{3}, 1); % we can choose which size to work with here
+	best_tree_ix = sorted_ids(t, best_size - min_tree_size);
+	best_ourcode_output = ourcode_all_Ms{best_size - min_tree_size}{best_tree_ix};
+
+	% the probability decays fast, so that we can normalized by the sum over the first few trees
+	tree_probs(t) = (exp(-best_ourcode_output{1}./(2*error_rate*error_rate)))/sum(exp(-sorted_vals(:,best_size - min_tree_size)./(2*error_rate*error_rate)));
+
+	M_target = best_ourcode_output{4};
+
+	U2 = inv(eye(size(best_ourcode_output{3})) - best_ourcode_output{3});
+	clust2 = [ [1: length(best_ourcode_output{6})]' , best_ourcode_output{6}];
+
+	nodelbs = cell(1,length(U2));
+	for i = 1:length(U2)
+		nodelbs{i} = num2str(clust2(clust2(:,2)==i,1)');
+	end
+
+	ax = subplot(2,5,t);
+	h = plot(digraph(  eye(length(U2)) - inv(U2)      ));
+	labelnode(h, [1:length(U2)],nodelbs);
+	if (t==1)
+		title(ax, ['List of probabilities: ' num2str(tree_probs(t))]);
+	else
+		title(ax, num2str(tree_probs(t)));
+	end
+	set(ax,'visible','off');
+	set(findall(ax, 'type', 'text'), 'visible', 'on');
+
+end
+	
+% maximize window
+set(gcf, 'Units', 'Normalized', 'OuterPosition', [0, 0.04, 1, 0.96]);
