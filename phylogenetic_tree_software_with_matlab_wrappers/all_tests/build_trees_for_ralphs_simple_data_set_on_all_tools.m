@@ -3,9 +3,9 @@
 
 %% load the data set
 
-%input_file = '/home/surjray/Phylogeny_repo/phylogenetic_tree_software_with_matlab_wrappers/all_tests/Sample_test_data/ralphs_simple_data_set_all_mutations_except_mut_5';
+input_file = '/home/surjray/Phylogeny_repo/phylogenetic_tree_software_with_matlab_wrappers/all_tests/Sample_test_data/ralphs_simple_data_set_all_mutations_except_mut_5';
 
-input_file = '/home/surjray/Phylogeny_repo/phylogenetic_tree_software_with_matlab_wrappers/all_tests/Sample_test_data/ralphs_second_simple_data_set_all_mutations';
+%input_file = '/home/surjray/Phylogeny_repo/phylogenetic_tree_software_with_matlab_wrappers/all_tests/Sample_test_data/ralphs_second_simple_data_set_all_mutations';
 
 %input_file = '/home/surjray/Phylogeny_repo/phylogenetic_tree_software_with_matlab_wrappers/all_tests/Sample_test_data/ralphs_third_simple_data_set_all_mutations';
 

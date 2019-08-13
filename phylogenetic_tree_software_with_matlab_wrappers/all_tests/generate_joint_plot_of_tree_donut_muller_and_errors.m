@@ -35,7 +35,8 @@ function generate_joint_plot_of_tree_donut_muller_and_errors(U,clust, Mutant_Fre
 	set(findall(gca, 'type', 'text'), 'visible', 'on');
 	%% draw donut plot with mutant mixing ratios
 	subplot(1,4,2);
-	[~, lgd] = donut(Mutant_Frequencies_M(:,1:5)', cum_nodelbs, node_col,1);
+	Mutant_Frequencies_M_num_size = size(Mutant_Frequencies_M', 1);
+	[~, lgd] = donut(Mutant_Frequencies_M(:,1:Mutant_Frequencies_M_num_size)', cum_nodelbs, node_col, 1);
 	title('Donut plot of mutants mixing ratios');
 	set(lgd,'visible','off');
 	set(gca,'visible','off');
