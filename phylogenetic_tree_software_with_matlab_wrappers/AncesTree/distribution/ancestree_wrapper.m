@@ -24,7 +24,7 @@
 %	an array that lists the nodes that belong to the ith cluster. These clusters are a subset of the clusters in M{6}
 %	
 % The last two components are not indexed by sold_id, and are the same for all of the solutions that AncesTree outputs
-%	M{5} = ?????
+%	M{5} = F_reduced'/2
 %	M{6} = pre-clustering of mutations. An array with 2 columns, the 1st column designating the cluster ID, and the 2nd column designating the mutation that belongs to that cluster
 
 
