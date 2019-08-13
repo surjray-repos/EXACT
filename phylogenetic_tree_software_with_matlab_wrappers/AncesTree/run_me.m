@@ -45,40 +45,5 @@ end
 % generate figure with an optimal tree, mutant frequencies, and errors to ground truth
 generate_joint_plot_of_tree_donut_muller_and_errors(U, clust, Mutant_Frequencies_M,  Ugt, clustgt);
 
-% generate figure with all the output trees inferred by AncesTree
-%%
-figure;
-num_solutions = size(ancestree_output{1}, 1);
-
-for sol_id = 1:num_solutions % this will show us all output trees
-	Mutant_Frequencies_M = ancestree_output{2}{sol_id}';
-	
-	U = ancestree_output{3}{sol_id};
-	U = inv(eye(length(U)) - U);
-	clust = [];
-	for i = 1:length(ancestree_output{4}{sol_id})
-		for j = ancestree_output{4}{sol_id}{i}'
-			clust = [clust; [j,i]];
-		end
-	end
-	
-	cost = compute_ancestree_fitting_cost(F_from_SampleData, clust,ancestree_output{1}{sol_id});
-	
-	nodelbs = cell(1,length(U));
-	for i = 1:length(U)
-		nodelbs{i} = num2str(clust(clust(:,2)==i,1)');
-	end
-	
-	ax = subplot(2, num_solutions/2, sol_id);
-	h = plot(digraph(  eye(length(U)) - inv(U)  ));
-	labelnode(h, [1:length(U)],nodelbs);
-	if (sol_id == 1)
-		title(ax, ['AncesTree fitting cost of different trees: ' , num2str(cost)]);
-	else
-		title(ax, [num2str(cost)]);
-	end
-	set(ax,'visible','off');
-	set(findall(ax, 'type', 'text'), 'visible', 'on');
-end
-% maximize window
-set(gcf, 'Units', 'Normalized', 'OuterPosition', [0, 0.04, 1, 0.96]);
+% generate figure with all the output trees inferred by AncesTree, and their fitting costs
+generate_list_of_AncesTree_trees_with_fitting_costs(ancestree_output, F_from_SampleData);
