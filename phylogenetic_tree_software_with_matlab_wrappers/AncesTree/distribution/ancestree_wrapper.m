@@ -1,15 +1,26 @@
 %% Matlab wrapper for AncesTree
+% calls the EXACT executable to infer phylogenetic trees
 
 % INPUTS:
 % F_reduced = matrix with frequency of mutation values, each row is associated with a mutated position, each column is associated with a sample. 
 % scale = multiplying factor to transform the mutation frequencies back to read counts i.e. read counts = F_reduced * scale
-
-% path_to_folder = path to the folder where EXACT will create temporary files
-% path_to_folder = path to the folder where EXACT will create temporary files
-
+% Desription of alpha, beta and gamma from https://github.com/raphael-group/AncesTree
+% alpha = Controls the clustering of mutations in the graph clustering phase: only arcs (v_j, v_k) with 0.5 - alpha <= min_p P(X_pj < X_pk) <= 0.5 + alpha are considered
+% beta = Controls the confidence in ancestral relationships in the graph: there is an arc (v_j, v_k) if min_p P(X_pj < X_pk) >= beta
+% gamma = Controls the allowed pertubation of observed variant frequencies by defining (1 - gamma) confidence intervals
+% wrapper_dir = path to the folder where AncesTree will create temporary files and folders
+% pathtoprogram = full path to the AncesTree executable
 % OUTPUTS:
 % M contains structures with the output trees and cluster information, mutant frequencies and calculated F values
-% 
+% M being a matlab cell object having 7 components, namely, 
+%	M{1} = recovered (clean) frequencies of mutations
+%	M{2} = clustered frequencies of mutants
+%	M{3} = adjacency matrix for the best tree. This is a directed tree. If we have this matrix T, then U = inv(I - T), where U appears in the PPM model as F = UM.
+%	M{4} = cluster membership information in form of a cell array, each row cell designates which particular cluster/node that group of mutations belongs to.
+%	M{5} = input complete set of frequencies of mutations
+%	M{6} = pre-clustering assignment of mutations. An array with 2 columns, the 1st column designating the cluster/node, and the 2nd column designating the mutation that belongs to that cluster
+% M{1}, M{2}, M{3} and M{4} might have, inside them, just one or several cells depending on how many solutions AncesTree has inferred.	
+
 
 function [M] = ancestree_wrapper(F_reduced, scale, alpha, beta, gamma, wrapper_dir, pathtoprogram )
 
