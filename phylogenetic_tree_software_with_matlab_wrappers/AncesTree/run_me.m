@@ -21,5 +21,8 @@ ancestree_executable_path = [pwd, '/distribution/build/ancestree'];
 ancestree_output = ancestree_wrapper(F_from_SampleData, scale, alpha, beta, gamma, wrapper_working_directory, ancestree_executable_path);
 
 % get output
-Tree_Matrix_T = ancestree_output{3};
-Mutant_Frequencies_M = ancestree_output{2};
+%since AncesTree might have multiple solutions, we shall check how many
+%solutions are inferred and reference them by sol_id
+sol_id = 1; %temporary for now!!!!!!!!!!
+Tree_Matrix_T = ancestree_output{3}{sol_id};
+Mutant_Frequencies_M = ancestree_output{2}{sol_id};
