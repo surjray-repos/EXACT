@@ -23,6 +23,7 @@ ancestree_output = ancestree_wrapper(F_from_SampleData, scale, alpha, beta, gamm
 % get output
 %since AncesTree might have multiple solutions, we shall check how many
 %solutions are inferred and reference them by sol_id
-sol_id = 1; %temporary for now!!!!!!!!!!
+sol_id = 1; %Considering the first opimal tree
 Tree_Matrix_T = ancestree_output{3}{sol_id};
 Mutant_Frequencies_M = ancestree_output{2}{sol_id};
+

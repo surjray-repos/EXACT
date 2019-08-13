@@ -11,16 +11,17 @@
 % wrapper_dir = path to the folder where AncesTree will create temporary files and folders
 % pathtoprogram = full path to the AncesTree executable
 % OUTPUTS:
-% M contains structures with the output trees and cluster information, mutant frequencies and calculated F values
-% M being a matlab cell object having 7 components, namely,
-% multiple solutions being indexed by sol_id here:
+% M is a matlab cell object having 6 components.
+% The first four components are in turn a cell object indexe by sol_id,
+% which lists different equally good solutions.
+% The number of solutions that AncesTree outputs is given by how many different sol_id indices there are in the output
 %	M{1}{sol_id} = recovered (clean) frequencies of mutations
 %	M{2}{sol_id} = clustered frequencies of mutants
 %	M{3}{sol_id} = adjacency matrix for the optimal tree. This is a directed tree. If we have this matrix T, then U = inv(I - T), where U appears in the PPM model as F = UM.
-%	M{4}{sol_id} = cluster membership information in form of a cell array, each row cell designates which particular cluster/node that group of mutations belongs to.
-%	M{5} = input complete set of frequencies of mutations
-%	M{6} = pre-clustering assignment of mutations. An array with 2 columns, the 1st column designating the cluster/node, and the 2nd column designating the mutation that belongs to that cluster
-% M{1}, M{2}, M{3} and M{4} might have, inside them, just one (sol_id = 1) or several cells depending on how many solutions AncesTree has inferred.	
+%	M{4}{sol_id} = cluster membership information for the clustering associated to M{2}{sol_id} in the form of a cell array. The ith cell is an array that lists the nodes that belong to the ith cluster
+% The last two components are not indexed by sold_id, and are the same for all of the solutions that AncesTree outputs
+%	M{5} = F_reduced
+%	M{6} = pre-clustering of mutations. An array with 2 columns, the 1st column designating the cluster ID, and the 2nd column designating the mutation that belongs to that cluster
 
 
 function [M] = ancestree_wrapper(F_reduced, scale, alpha, beta, gamma, wrapper_dir, pathtoprogram )
