@@ -1,4 +1,4 @@
-function generate_list_of_top_10_trees_with_probabilities(top_k_value, max_tree_size, min_tree_size, error_rate, ourcode_all_Ms, ourcode_output)
+function generate_list_of_top_k_trees_with_probabilities(display_top_k,top_k_value, max_tree_size, min_tree_size, error_rate, ourcode_all_Ms, ourcode_output)
 
 	figure;
 
@@ -13,7 +13,7 @@ function generate_list_of_top_10_trees_with_probabilities(top_k_value, max_tree_
 		[sorted_vals(:,j), sorted_ids(:,j)] = sort(sorted_vals(:,j));
 	end
 
-	for t = 1:10 % this will show us the top 10 trees
+	for t = 1:display_top_k % this will show us the top 10 trees
 		best_size = size(ourcode_output{3}, 1); % we can choose which size to work with here
 		best_tree_ix = sorted_ids(t, best_size - min_tree_size);
 		best_ourcode_output = ourcode_all_Ms{best_size - min_tree_size}{best_tree_ix};

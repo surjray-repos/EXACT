@@ -47,4 +47,4 @@ clust = [ [1: length(ourcode_output{6})]' , ourcode_output{6}];
 generate_joint_plot_of_tree_donut_muller_and_errors(U, clust, Mutant_Frequencies_M,  Ugt, clustgt);
 
 % generate a list of top 10 trees ranked by their probabilities according to our assumed model
-generate_list_of_top_10_trees_with_probabilities(top_k_value, max_tree_size, min_tree_size, error_rate, ourcode_all_Ms, ourcode_output);
+generate_list_of_top_k_trees_with_probabilities(10,top_k_value, max_tree_size, min_tree_size, error_rate, ourcode_all_Ms, ourcode_output);
