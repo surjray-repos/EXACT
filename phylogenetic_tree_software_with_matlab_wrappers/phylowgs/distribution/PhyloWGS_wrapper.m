@@ -15,7 +15,7 @@
 % The number of solutions that PhyloWGS outputs is given by how many different sol_id indices there are in the output 
 % M{1}{sol_id} = adjacency matrix for the sol_id th output tree. This is a directed tree. If we have this matrix T, then U = inv(I - T), where U appears in the PPM model as F = UM.
 % M{2}{sol_id} = cluster membership information for the clustering. An array with 2 columns, the 2nd column designating the cluster ID, and the 1st column designating the mutation that belongs to that cluster
-% M{3}{sol_id} = clustered frequencies of mutants.
+% M{3}{sol_id} = helps in obtaining clustered frequencies of mutants.
 
 function [M] = PhyloWGS_wrapper(F_reduced, scale, wrapper_dir, phylowgs_exec_dir, mu_r_val, mu_v_val)
 close all;
