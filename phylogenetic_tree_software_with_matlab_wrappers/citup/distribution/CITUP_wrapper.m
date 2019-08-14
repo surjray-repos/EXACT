@@ -1,9 +1,11 @@
-%% this is a matlab wrapper for the functions of CITUP. 
-% It transforms the input in a form similar to Ancestree and then calls the
-% CITUP clustering.py to cluster the input mutations
-% the root is node 0
+%% Matlab wrapper for AncesTree
+% calls the CITUP invocation script to infer phylogenetic trees
+% INPUTS:
+% F_reduced = matrix with frequency of mutation values, each row is associated with a mutated position, each column is associated with a sample. 
+% wrapper_dir = path to the folder where CITUP will create temporary files and folders
+% cluster_number = 
 
-% M{1} stores multiple adjcencay matrices. One per solution found. These
+% M{1} stores multiple adjacency matrices. One per solution found. These
 % solutions are AFTER clustering has been done. ALl the trees here have the
 % same corresponding clustering map. The root of the trees is always node
 % zero.
@@ -17,6 +19,7 @@
 
 function [M] = CITUP_wrapper(F_reduced, wrapper_dir, cluster_number, pathtoprogram, error_rate  )
     
+	% the root is node 0
     disp('The root is node 0');
     
     starting_directory = pwd;

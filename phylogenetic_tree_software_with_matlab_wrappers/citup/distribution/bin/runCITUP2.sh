@@ -12,7 +12,7 @@ fi
 citup_directory=".."		# full path of the citup installation directory
 cplex_time=48				# Max time allowed for CPLEX in hours
 cplex_memory=128				# Max memory allowed for CPLEX in gb
-cplex_threads=24			# Number of threads available to CPLEX
+cplex_threads=40			# Number of threads available to CPLEX
 min_nodes=2					# Trees with less number of nodes will not be processed (min value is 2)
 max_nodes=4					# Trees with more number of nodes will not be processed (max value is 10)
 # ---------------------------------------------------------------------
