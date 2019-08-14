@@ -25,7 +25,7 @@ function generate_joint_plot_of_tree_donut_muller_and_errors(U,clust, Mutant_Fre
 	%f = figure;
 	subplot(1,4,1);
 	h = plot(digraph( eye(length(U)) - inv(U) ));
-	title('Most likely tree');
+	title('First output tree');
 	labelnode(h,[1:length(U)],nodelbs);
 	highlight(h,[1:length(U)],'MarkerSize',20);
 	for i = 1:length(U)

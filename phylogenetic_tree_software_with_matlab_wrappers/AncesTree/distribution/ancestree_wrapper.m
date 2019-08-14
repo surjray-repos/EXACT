@@ -1,9 +1,9 @@
 %% Matlab wrapper for AncesTree
-% calls the EXACT executable to infer phylogenetic trees
+% calls the AncesTree executable to infer phylogenetic trees
 
 % INPUTS:
 % F_reduced = matrix with frequency of mutation values, each row is associated with a mutated position, each column is associated with a sample. 
-% scale = multiplying factor to transform the mutation frequencies back to read counts i.e. read counts = F_reduced * scale
+% scale = multiplying factor to transform the mutation frequencies back to read counts
 % Desription of alpha, beta and gamma from https://github.com/raphael-group/AncesTree
 % alpha = Controls the clustering of mutations in the graph clustering phase: only arcs (v_j, v_k) with 0.5 - alpha <= min_p P(X_pj < X_pk) <= 0.5 + alpha are considered
 % beta = Controls the confidence in ancestral relationships in the graph: there is an arc (v_j, v_k) if min_p P(X_pj < X_pk) >= beta
@@ -12,8 +12,7 @@
 % pathtoprogram = full path to the AncesTree executable
 % OUTPUTS:
 % M is a matlab cell object having 6 components.
-% The first four components are in turn a cell object indexe by sol_id,
-% which lists different good solutions.
+% The first four components are in turn a cell object indexed by sol_id, which lists different good solutions.
 % The number of solutions that AncesTree outputs is given by how many different sol_id indices there are in the output
 %	M{1}{sol_id} = recovered (clean) frequencies of clustered mutations.
 %	Each row is associated to a different sample, and each column to a different cluster of mutations

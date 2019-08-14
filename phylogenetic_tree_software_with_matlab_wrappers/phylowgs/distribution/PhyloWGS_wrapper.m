@@ -1,10 +1,21 @@
-%% this is a matlab wrapper for the function that computes the distance between graphs via bruteforce
-% we assume that we are going to read undirected, unweighted graphs of the same size
-%function signature: count_general_wrapper_PhyloWGS_bowie(F_reduced, scale)
-%Reads the adjacency matrix file called, 'top_k_trees_adjacency_matrix.txt'
-%into cell structure 'sol_cell' - cells with all adjacency matrices
-%'top_k_trees_max_element_genes.txt' has gene names with node numbers.
-% the virtual root is node 0
+%% Matlab wrapper for PhyloWGS
+% calls the PhyloWGS executable to infer phylogenetic trees
+
+% INPUTS:
+% F_reduced = matrix with frequency of mutation values, each row is associated with a mutated position, each column is associated with a sample. 
+% scale = multiplying factor to transform the mutation frequencies back to read counts 
+% wrapper_dir = path to the folder where PhyloWGS will create temporary files and folders
+% phylowgs_exec_dir = full path to the directory where PhyloWGS executables are located
+% Constants for PhyloWGS, for sequencing data from https://github.com/morrislab/phylowgs
+% mu_r_val = fraction of expected reference allele sampling from the reference population
+% mu_v_val = fraction of expected reference allele sampling from variant population
+% OUTPUTS:
+% M is a matlab cell object having 3 components.
+% Each component is a cell object indexed by sol_id, which lists different good solutions.
+% The number of solutions that PhyloWGS outputs is given by how many different sol_id indices there are in the output 
+% M{1}{sol_id} = adjacency matrix for the sol_id th output tree. This is a directed tree. If we have this matrix T, then U = inv(I - T), where U appears in the PPM model as F = UM.
+% M{2}{sol_id} = cluster membership information for the clustering. An array with 2 columns, the 2nd column designating the cluster ID, and the 1st column designating the mutation that belongs to that cluster
+% M{3}{sol_id} = recovered (clean) frequencies of clustered mutations.
 
 function [M] = PhyloWGS_wrapper(F_reduced, scale, wrapper_dir, phylowgs_exec_dir, mu_r_val, mu_v_val)
 close all;
@@ -16,6 +27,8 @@ close all;
     n = size(F_reduced',1);
     T = size(F_reduced',2);
     
+	% the virtual root is node 0
+	
     rng shuffle;   
     file_number = num2str(randi(1000000000));
     fileF = ['fileF', file_number];
