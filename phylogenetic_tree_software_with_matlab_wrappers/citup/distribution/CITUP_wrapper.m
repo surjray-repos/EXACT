@@ -9,15 +9,12 @@
 % error_rate = used to determine how noisy the allelic frequencies are. For real data, this value is set low (0.03-0.05) for deep sequencing and higher (0.05-0.08) for lower coverage datasets.
 % OUTPUTS:
 % M is a matlab cell object having 5 components.
-% Each component is a cell object indexed by sol_id, which is 1 in this case since this is the most optimal solution (chosen by a Bayesian Information Criterion)
-% M{1}{sol_id} = adjacency matrix for the optimal output tree. This is a directed tree. If we have this matrix T, then U = inv(I - T), where U appears in the PPM model as F = UM.
-% The next component if not indexed by sol_id
+% Each component is a cell object
+% M{1}{1} = adjacency matrix for the optimal output tree. This is a directed tree. If we have this matrix T, then U = inv(I - T), where U appears in the PPM model as F = UM.
 % M{2} = cluster membership information for the clustering. An array with 2 columns, the 2nd column designating the cluster ID, and the 1st column designating the mutation that belongs to that cluster
-% M{3}{sol_id} = clustered frequencies of mutants
-% M{4}{sol_id} = frequencies of the input, after mutations have been clustered
-% Each row of the above is associated to a different sample, and each column to a different cluster of mutations
-% The next component if not indexed by sol_id
-% M{5} = recovered (clean) frequencies of clustered mutations.
+% M{3}{1} = clustered frequencies of mutants. Rows are associated with samples, and columns with mutants
+% M{4}{1} = recovered (clean) frequencies of clustered mutations. Rows are associated with samples, and columns with mutations
+% M{5} = frequencies of clustered-mutations after the kmeans preclustering
 
 
 function [M] = CITUP_wrapper(F_reduced, wrapper_dir, cluster_number, pathtoprogram, error_rate  )
