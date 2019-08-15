@@ -57,4 +57,5 @@ Mutant_Frequencies_M = inv(U)*phylowgs_output{3}{sol_id};
 generate_joint_plot_of_tree_donut_muller_and_errors(U, clust, Mutant_Frequencies_M,  Ugt, clustgt);
 
 % generate figure with all the output trees inferred by PhyloWGS
+% we note that, often, many of these trees are actually the same
 generate_list_of_PhyloWGS_trees(phylowgs_output);

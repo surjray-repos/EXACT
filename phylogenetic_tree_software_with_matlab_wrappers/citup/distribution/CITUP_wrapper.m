@@ -5,18 +5,19 @@
 % wrapper_dir = path to the folder where CITUP will create temporary files and folders
 % cluster_number = number of clusters or the size of the inferred tree we want
 % pathtoprogram = full path to the AncesTree executable
-% Desription of error_rate from https://github.com/sfu-compbio/citup
+% Description of error_rate from https://github.com/sfu-compbio/citup
 % error_rate = used to determine how noisy the allelic frequencies are. For real data, this value is set low (0.03-0.05) for deep sequencing and higher (0.05-0.08) for lower coverage datasets.
 % OUTPUTS:
-% M is a matlab cell object having 7 components.
+% M is a matlab cell object having 5 components.
 % Each component is a cell object indexed by sol_id, which is 1 in this case since this is the most optimal solution (chosen by a Bayesian Information Criterion)
 % M{1}{sol_id} = adjacency matrix for the optimal output tree. This is a directed tree. If we have this matrix T, then U = inv(I - T), where U appears in the PPM model as F = UM.
 % The next component if not indexed by sol_id
 % M{2} = cluster membership information for the clustering. An array with 2 columns, the 2nd column designating the cluster ID, and the 1st column designating the mutation that belongs to that cluster
 % M{3}{sol_id} = clustered frequencies of mutants
 % M{4}{sol_id} = frequencies of the input, after mutations have been clustered
+% Each row of the above is associated to a different sample, and each column to a different cluster of mutations
+% The next component if not indexed by sol_id
 % M{5} = recovered (clean) frequencies of clustered mutations.
-% M{6} = correlation of mutations to nodes, using the clustering information in M{2}. Each column designates the node in the tree that particular mutation belongs to.
 
 %%%%%%% to be removed %%%%%%%
 % M{1} stores multiple adjacency matrices. One per solution found. These
@@ -29,7 +30,6 @@
 % M{5}  F matrix for the clustered mutations. THis F matrix is a function
 % of the input unclustered F matrix and the particular mutation done by the
 % program
-% M[6] correlation of mutations to nodes
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 

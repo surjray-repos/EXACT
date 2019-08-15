@@ -1,4 +1,4 @@
-%% example of how to use our brute force phylogeny code EXACT!
+%% example of how to use EXACT
 
 % first install CVX, if it is not install yet
 % we recommend downloading, and installing, the latest CVX version from
@@ -18,7 +18,7 @@ ground_truth_file = '/home/surjray/Phylogeny_repo/phylogenetic_tree_software_wit
 Ugt = true_tree_data{3}';
 clustgt = true_tree_data{5};
 
-% parameters
+% EXACT parameters
 path_to_folder = [pwd, '/distribution/'];
 exec_name = 'EXACT_executable_x64_CUDA.out';
 cost_function = 'cost1'; %possible options: cost1, cost2, cost3, cost4
@@ -37,6 +37,7 @@ top_k_value = 20;
 % run EXACT
 [ourcode_output, ~, ourcode_all_Ms] = EXACT_wrapper_diff_tree_size(F_from_SampleData, error_rate, min_tree_size, max_tree_size, path_to_folder, exec_name, cpu_gpu, cost_function, top_k_value, GPU_id, num_CPU_cores, max_num_partitions, device_tree_subset_value, CUDA_threads_per_block, CUDA_blocks);
 
+% extra Tree matrix and clustering
 Tree_Matrix_T = ourcode_output{3};
 Mutant_Frequencies_M = ourcode_output{4}; 
 
