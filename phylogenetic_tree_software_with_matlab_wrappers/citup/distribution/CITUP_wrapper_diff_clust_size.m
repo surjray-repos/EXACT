@@ -1,5 +1,13 @@
 %% Function to find the smallest BIC(Bayesian Information criterion) for
 % multiple cluster sizes
+% calls CITUP_wrapper.m
+% INPUTS:
+% F_from_SampleData = matrix with frequency of mutation values, each row is associated with a mutated position, each column is associated with a sample. 
+% wrapper_working_directory = path to the folder where CITUP will create temporary files and folders
+
+
+
+
 
 
 function [sol_min_bic, best_sol,all_int_sol] = CITUP_wrapper_diff_clust_size( F_from_SampleData, wrapper_working_directory, min_cluster_no, max_cluster_no, CITUP_executable_path, citup_error_rate )
