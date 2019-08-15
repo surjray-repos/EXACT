@@ -1,6 +1,8 @@
 %% Function to find the smallest BIC(Bayesian Information criterion) for
 % multiple cluster sizes
-function [sol_min_bic, best_sol,all_int_sol] = CITUP_wrapper_diff_clust_size( F_from_SampleData, wrapper_working_directory, min_cluster_no,max_cluster_no, CITUP_executable_path, citup_error_rate )
+
+
+function [sol_min_bic, best_sol,all_int_sol] = CITUP_wrapper_diff_clust_size( F_from_SampleData, wrapper_working_directory, min_cluster_no, max_cluster_no, CITUP_executable_path, citup_error_rate )
     error_rate = citup_error_rate;
     num_mutations = size(F_from_SampleData,1);
     num_samples = size(F_from_SampleData,2);

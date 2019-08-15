@@ -25,4 +25,26 @@ citup_error_rate = 0.03;
 % solutions are inferred and reference them by sol_id
 sol_id = 1; %Considering the first output tree
 Tree_Matrix_T = citup_output{1}{sol_id};
-Mutant_Frequencies_M = citup_output{3}{sol_id}; 
+Mutant_Frequencies_M = citup_output{3}{sol_id}';
+
+U = citup_output{1}{sol_id};
+root_citup = 1; % the root of the treee is always node 1.
+n_virt_nodes_citup = size(U,1);
+AdjLrecon = {};
+for j =1:n_virt_nodes_citup
+	AdjLrecon{j} = find(U(:,j));
+end
+Treerecon = BFS(AdjLrecon,root_citup); %root is the node 0 in unlabled tree
+% get adj mat of tree
+AdjTrecon = zeros(n_virt_nodes_citup);
+for j =1:n_virt_nodes_citup
+	for r = Treerecon{j}
+		AdjTrecon(j,r) = 1;
+	end
+end
+U = inv(eye(n_virt_nodes_citup) - AdjTrecon);
+clust = citup_output{2};
+clust(:,2) = 1 + clust(:,2);
+
+% generate figure with an optimal tree, mutant frequencies, and errors to ground truth
+generate_joint_plot_of_tree_donut_muller_and_errors(U, clust, Mutant_Frequencies_M,  Ugt, clustgt);
