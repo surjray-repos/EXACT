@@ -19,19 +19,6 @@
 % The next component if not indexed by sol_id
 % M{5} = recovered (clean) frequencies of clustered mutations.
 
-%%%%%%% to be removed %%%%%%%
-% M{1} stores multiple adjacency matrices. One per solution found. These
-% solutions are AFTER clustering has been done. ALl the trees here have the
-% same corresponding clustering map. The root of the trees is always node
-% zero.
-% M{2} cluster that takes real mutations into clustered mutations ID
-% M{3} output M matrices for each of the solutions in M{1}
-% M{4} output F matrices for each of the solutions in M{1}
-% M{5}  F matrix for the clustered mutations. THis F matrix is a function
-% of the input unclustered F matrix and the particular mutation done by the
-% program
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
 
 function [M] = CITUP_wrapper(F_reduced, wrapper_dir, cluster_number, pathtoprogram, error_rate  )
     
