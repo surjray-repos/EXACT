@@ -4,7 +4,7 @@
 % INPUTS:
 % F_reduced = matrix with frequency of mutation values, each row is associated with a mutated position, each column is associated with a sample. 
 % scale = multiplying factor to transform the mutation frequencies back to read counts
-% Desription of alpha, beta and gamma from https://github.com/raphael-group/AncesTree
+% Description of alpha, beta and gamma from https://github.com/raphael-group/AncesTree
 % alpha = Controls the clustering of mutations in the graph clustering phase: only arcs (v_j, v_k) with 0.5 - alpha <= min_p P(X_pj < X_pk) <= 0.5 + alpha are considered
 % beta = Controls the confidence in ancestral relationships in the graph: there is an arc (v_j, v_k) if min_p P(X_pj < X_pk) >= beta
 % gamma = Controls the allowed pertubation of observed variant frequencies by defining (1 - gamma) confidence intervals

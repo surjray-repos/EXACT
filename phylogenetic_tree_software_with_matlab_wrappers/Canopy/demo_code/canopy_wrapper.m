@@ -1,3 +1,19 @@
+%% Matlab wrapper for Canopy
+% calls the Canopy R executables to infer phylogenetic trees
+
+% INPUTS:
+% full_input_file_name = full path of the input file with mutation counts, from which variant allele frequencies are calculated. "The input is a tab-separated ASCII text file. The first line contains the sample headers. The first column contains gene ids. Then every consecutive pair of columns contains read counts for reference alleles and alternate alleles, respectively."
+% wrapper_dir = path to the folder where Canopy R scripts will create temporary files and folders
+% Description of burnin_val, thin_val and gamma from https://github.com/yuchaojiang/Canopy
+
+
+
+
+
+
+
+
+
 function [M_canopy_output] = canopy_wrapper(full_input_file_name, wrapper_dir, burnin_val, thin_val, K_min_val, K_max_val, numchains_val, maxsimrun_val, minsimrun_val, writeskip_val, cluster_start, cluster_end)
 
 	%Script to create R_file,X_file, WM_file, Wm_file and Y_file from
@@ -29,7 +45,7 @@ function [M_canopy_output] = canopy_wrapper(full_input_file_name, wrapper_dir, b
 	writeskip = writeskip_val;
 	
 	fID = fopen('parameters_file.tsv','w');
-	fprintf(fID, '%d\n%d\n%d\n%d\n%d\n%d\n%d\n%d\n',burnin,thin,K_min,K_max,numchains,maxsimrun,minsimrun,writeskip);
+	fprintf(fID, '%d\n%d\n%d\n%d\n%d\n%d\n%d\n%d\n',burnin, thin, K_min, K_max, numchains, maxsimrun, minsimrun, writeskip);
 	fclose(fID);
 	
 	fID = fopen('cluster_parameters_file.tsv','w');
