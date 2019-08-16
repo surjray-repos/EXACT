@@ -55,6 +55,17 @@ function generate_joint_plot_of_tree_donut_muller_and_errors(U, clust, Mutant_Fr
 	set(findall(gca, 'type', 'text'), 'visible', 'on');
 	%% assuming that the different samples are obtained in time, we can draw a muller plot
 	subplot(1,4,3);
+	
+	% checking if the M matrix has a similar number of rows as U
+	% U is a square matrix with equal number of rows and columns
+	ncol_U = size(U, 2);
+	nrow_M = size(Mutant_Frequencies_M, 1);
+	if (nrow_M < ncol_U)
+		new_M = zeros(size(Mutant_Frequencies_M));
+		new_M(size(Mutant_Frequencies_M) + 1,:) = 0;
+		new_M(2:end, 1:end) = Mutant_Frequencies_M;
+		Mutant_Frequencies_M = new_M;
+	end
 	[~, lgd] = generate_simple_muller_plots(U, Mutant_Frequencies_M, cum_nodelbs, node_col);
 	title('Muller plot of mutants mixing ratios');
 	set(lgd,'visible','off');
