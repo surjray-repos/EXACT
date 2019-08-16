@@ -26,9 +26,10 @@ cluster_number_end = 9;
 canopy_output = canopy_wrapper(input_file, path_to_folder, burnin_val, thin_val, K_min_val, K_max_val, numchains_val, maxsimrun_val, minsimrun_val, writeskip_val, cluster_number_start, cluster_number_end);
 
 % get output
-Ancestry_Matrix_U = canopy_output{1};
 Mutant_Frequencies_M = canopy_output{2};
 
+% this function reads read the output from canopy and extracts a tree and a
+% clustering
 [U, clust] = extract_U_mat_and_clust_from_canopy_output(canopy_output);
 
 % generate figure with an optimal tree, mutant frequencies, and errors to ground truth
