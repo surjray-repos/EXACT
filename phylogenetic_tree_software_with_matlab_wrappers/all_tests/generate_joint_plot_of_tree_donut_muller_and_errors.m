@@ -12,6 +12,13 @@
 
 %% Function to generate tree diagrams, donut plot, Muller plot and error plots
 
+% INPUTS:
+% U = ancestry matrix showing parent-child relationships between mutants, U appears in the PPM model as F = UM.
+% clust = clustering information to show which mutations belong to which cluster/node.
+% Mutant_Frequencies_M = clustered frequencies of mutants
+% Ugt = ancestry matrix, for the ground truth tree, showing parent-child relationships between mutants, U appears in the PPM model as F = UM.
+% clustgt = clustering information, for the ground truth tree, to show which mutations belong to which cluster/node.
+
 function generate_joint_plot_of_tree_donut_muller_and_errors(U, clust, Mutant_Frequencies_M, Ugt, clustgt)
 
 	% build tree labels from the cluster information
