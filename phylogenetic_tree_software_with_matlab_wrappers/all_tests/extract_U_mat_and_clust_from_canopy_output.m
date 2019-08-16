@@ -11,6 +11,20 @@
 % GNU General Public License for more details.
 
 %% Function to obtain U ancestry matrix and clustering information from Canopy output
+
+% INPUTS:
+% canopy_output is a matlab cell object having 7 components.
+% canopy_output{1} = matrix representation of a tumor's clonal composition. Z_sk is the indicator of whether the s'th SNA is present at the k'th clone. 
+% canopy_output{2} = clustered frequencies of mutants
+% canopy_output{3} = records which mutations (rows) in M_canopy_output{1} are clustered together. This record takes the form of a cell array. The i'th cell is an array that lists the rows that belong to the i'th cluster.
+% canopy_output{4} = records which clones (columns) in the M_canopy_output{1} are clustered together. This record takes the form of a cell array. The i'th cell is an array that lists the columns that belong to the i'th cluster.
+% canopy_output{5} = pre MCMC clustering. An array with 2 columns. A row of the form [i, j] signfies that the mutation j belongs to cluster i.
+% canopy_output{6} = post MCMC final cluster membership information for the clustering. An array with 2 columns. A row of the form [i, j] signfies that the mutation j belongs to cluster i.
+% canopy_output{7} = run time (in seconds) for the Canopy executable to infer the best tree.
+% OUTPUTS:
+% U = ancestry matrix showing parent-child relationships between mutants, U appears in the PPM model as F = UM.
+% clust = clustering information to show which mutations belong to which cluster/node.
+
 function [U, clust]	 = extract_U_mat_and_clust_from_canopy_output(canopy_output)
 
 	canopy_U_matrix = canopy_output{1};
