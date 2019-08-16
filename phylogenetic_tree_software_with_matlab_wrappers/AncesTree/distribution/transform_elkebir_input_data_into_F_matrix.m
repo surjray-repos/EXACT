@@ -1,3 +1,16 @@
+% Copyright (c) 2019 Surjyendu Ray
+% 
+% This program is free software: you can redistribute it and/or modify
+% it under the terms of the GNU General Public License as published by
+% the Free Software Foundation, either version 3 of the License, or
+% (at your option) any later version.
+% 
+% This program is distributed in the hope that it will be useful,
+% but WITHOUT ANY WARRANTY; without even the implied warranty of
+% MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+% GNU General Public License for more details.
+
+%% Function to generate frequency of mutations matrix from mutation counts data
 function [F_from_SampleData, scaling_factor_float] =  transform_elkebir_input_data_into_F_matrix(input_file)
 
     fileF = input_file;

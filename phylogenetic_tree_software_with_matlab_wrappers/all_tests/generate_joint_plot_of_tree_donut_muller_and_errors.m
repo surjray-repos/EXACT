@@ -10,6 +10,8 @@
 % MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 % GNU General Public License for more details.
 
+%% Function to generate tree diagrams, donut plot, Muller plot and error plots
+
 function generate_joint_plot_of_tree_donut_muller_and_errors(U, clust, Mutant_Frequencies_M, Ugt, clustgt)
 
 	% build tree labels from the cluster information

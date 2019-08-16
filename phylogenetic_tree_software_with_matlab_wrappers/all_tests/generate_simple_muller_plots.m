@@ -10,6 +10,8 @@
 % MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 % GNU General Public License for more details.
 
+%% Generates Muller plots from U ancestry matrix, mutant frequency and
+% related information
 function [h,lgd] = generate_simple_muller_plots(U,M,cum_nodelbs,node_col)
 
 % get sizes
