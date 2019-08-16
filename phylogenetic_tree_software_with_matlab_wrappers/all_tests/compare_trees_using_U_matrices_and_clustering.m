@@ -10,6 +10,7 @@
 % MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 % GNU General Public License for more details.
 
+%% Function to calculate 4 error types from U matrices and clustering information for inferred tree vs ground truth tree
 function [error_rates] = compare_trees_using_U_matrices_and_clustering(ground_truth_Tree_matrix_on_clustered_nodes, ground_truth_clusters, U_recon, clusters_for_sol)
     % compares observed tree with ground truth
     % go over one solution and compute the error
