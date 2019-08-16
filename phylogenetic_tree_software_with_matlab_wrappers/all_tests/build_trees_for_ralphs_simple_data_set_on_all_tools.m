@@ -212,7 +212,7 @@ generate_simple_muller_plots(U2,M_target,cum_nodelbs,node_col);
 set(gca,'visible','off')
 %% run Canopy
 
-base_folder =  '/home/surjray/Phylogeny_repo/phylogenetic_tree_software_with_matlab_wrappers/Canopy';
+base_folder =  '/home/surjray/backups_of_phylo_project/Dropbox_Phylogeny_project_11th_July_2019/phylogenetic_tree_software_with_matlab_wrappers/Canopy-master';
 
 path_to_folder = [base_folder, '/demo_code/'];
 

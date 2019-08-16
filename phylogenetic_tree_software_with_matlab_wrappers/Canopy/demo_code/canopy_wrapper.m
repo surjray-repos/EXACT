@@ -4,14 +4,23 @@
 % INPUTS:
 % full_input_file_name = full path of the input file with mutation counts, from which variant allele frequencies are calculated. "The input is a tab-separated ASCII text file. The first line contains the sample headers. The first column contains gene ids. Then every consecutive pair of columns contains read counts for reference alleles and alternate alleles, respectively."
 % wrapper_dir = path to the folder where Canopy R scripts will create temporary files and folders
-% Description of burnin_val, thin_val and gamma from https://github.com/yuchaojiang/Canopy
-
-
-
-
-
-
-
+% Description of the followinginput variables from https://github.com/yuchaojiang/Canopy and the CRAN vignette of Canopy
+% burnin_val = burnin of MCMC chains
+% thin_val = MCMC chains thinning
+% K_min_val, K_max_val = minimum and maximum number of subclones allowed respectively
+% numchains_val = number of MCMC chains with random initiations
+% maxsimrun_val, minsimrun_val = maximum and minimum number of simutation iterations for each chain, respectively
+% writeskip_val = interval to store sampled trees
+% cluster_start, cluster_end = determines the range of the number of mutation clusters (BIC as model selection metric)
+% OUTPUTS:
+% M_canopy_output is a matlab cell object having 7 components.
+% M_canopy_output{1} = matrix representation of a tumor's clonal composition. Zsk is the indicator of whether the sth SNA is present at the kth clone. We first sort the columns, cluster the columns and the rows of the matrix to get unique relations between the mutants, and also add a null mutation
+% M_canopy_output{2} = clustered frequencies of mutants
+% M_canopy_output{3} = records rows of the unique_cols_rows_sorted_Z_with_null_mut matrix that got clustered together, in the form of a cell array. The ith cell is an array that lists the rows that belong to the ith cluster.
+% M_canopy_output{4} = records columns of the unique_cols_rows_sorted_Z_with_null_mut matrix that got clustered together, in the form of a cell array. The ith cell is an array that lists the columns that belong to the ith cluster.
+% M_canopy_output{5} = pre-clustering membership information for the clustering. An array with 2 columns, the 2nd column designating the cluster ID, and the 1st column designating the mutation that belongs to that cluster
+% M_canopy_output{6} = post MCMC final cluster membership information for the clustering. An array with 2 columns, the 2nd column designating the cluster ID, and the 1st column designating the mutation that belongs to that cluster
+% M_canopy_output{7} = run time (in seconds) for the Canopy executable to infer the most optimal tree.
 
 
 function [M_canopy_output] = canopy_wrapper(full_input_file_name, wrapper_dir, burnin_val, thin_val, K_min_val, K_max_val, numchains_val, maxsimrun_val, minsimrun_val, writeskip_val, cluster_start, cluster_end)

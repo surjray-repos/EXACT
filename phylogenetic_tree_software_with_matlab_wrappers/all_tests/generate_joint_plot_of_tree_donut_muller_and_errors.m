@@ -1,4 +1,16 @@
-function generate_joint_plot_of_tree_donut_muller_and_errors(U,clust, Mutant_Frequencies_M,  Ugt, clustgt)
+% Copyright (c) 2019 Surjyendu Ray
+% 
+% This program is free software: you can redistribute it and/or modify
+% it under the terms of the GNU General Public License as published by
+% the Free Software Foundation, either version 3 of the License, or
+% (at your option) any later version.
+% 
+% This program is distributed in the hope that it will be useful,
+% but WITHOUT ANY WARRANTY; without even the implied warranty of
+% MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+% GNU General Public License for more details.
+
+function generate_joint_plot_of_tree_donut_muller_and_errors(U, clust, Mutant_Frequencies_M, Ugt, clustgt)
 
 	% build tree labels from the cluster information
 	nodelbs = cell(1,length(U));

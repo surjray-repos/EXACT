@@ -51,7 +51,7 @@
 %	all_Ms{sol_id}{4} = recovered (clean) frequencies of mutations
 %	all_Ms{sol_id}{5} = clustered frequencies of mutations
 %	all_Ms{sol_id}{6} = cluster membership information, the number in column 1 of each row designating which cluster/node each mutation (row number) belongs to.
-%	all_Ms{sol_id}{7} = run time (in seconds) for the executable to infer the sold_id tree among all trees of the same size while keeping track of all k_best trees
+%	all_Ms{sol_id}{7} = run time (in seconds) for the executable to infer the sol_id tree among all trees of the same size while keeping track of all k_best trees
 
 
 function [best_M, best_bic, all_Ms] = EXACT_wrapper_diff_tree_size(F_reduced, error_rate, min_tree_size, max_tree_size, path_to_folder, exec_name, cpu_gpu, cost, k_best, gpu_id, cpu_cores, num_devices, tree_subset, CUDA_thread_block, CUDA_blocks )
