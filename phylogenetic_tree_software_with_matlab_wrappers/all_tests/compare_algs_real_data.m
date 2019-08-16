@@ -1,5 +1,16 @@
-%load('/home/sam_safavi/Desktop/phylogenetic_tree_software_with_matlab_wrappers/all_tests/all_results/real_data_first_four_algs_errors_April_19.mat')
+% Copyright (c) 2019 Surjyendu Ray
+% 
+% This program is free software: you can redistribute it and/or modify
+% it under the terms of the GNU General Public License as published by
+% the Free Software Foundation, either version 3 of the License, or
+% (at your option) any later version.
+% 
+% This program is distributed in the hope that it will be useful,
+% but WITHOUT ANY WARRANTY; without even the implied warranty of
+% MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+% GNU General Public License for more details.
 
+%load('/home/sam_safavi/Desktop/phylogenetic_tree_software_with_matlab_wrappers/all_tests/all_results/real_data_first_four_algs_errors_April_19.mat')
 
 phylowgs_exact_mean_error = mean(all_four_errors_phylowgs_exact,2);
 phylowgs_exact_mean_error_std = zeros(4,1);
