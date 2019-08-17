@@ -18,6 +18,12 @@
 % Mutant_Frequencies_M = clustered frequencies of mutants
 % Ugt = ancestry matrix, for the ground truth tree, showing parent-child relationships between mutants, U appears in the PPM model as F = UM.
 % clustgt = clustering information, for the ground truth tree, to show which mutations belong to which cluster/node.
+% OUTPUTS:
+% Generates the following four visualizations in a single figure:
+%	Tree diagram with information about which nodes contain which mutations
+%	donut plot with mutant mixing ratios
+%	Muller plot to display the above mixing ratios
+%	displays a bar plot with four different error types between synthetic data ground truth and EXACT inferred tree
 
 function generate_joint_plot_of_tree_donut_muller_and_errors(U, clust, Mutant_Frequencies_M, Ugt, clustgt)
 
