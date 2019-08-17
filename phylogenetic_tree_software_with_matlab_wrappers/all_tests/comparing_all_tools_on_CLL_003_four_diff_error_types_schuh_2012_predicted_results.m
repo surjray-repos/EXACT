@@ -1,6 +1,9 @@
-%% comparing all tools on Schuh et al predicted output for CLL 003 data
-
-% these are the results that Schuh et al give for the CLL data sets
+%% comparing all tools on Schuh et. al. predicted output for CLL 003 data
+% Calculates the four error types, for EXACT, AncesTree, PhyloWGS, CITUP
+% and Canopy, each tool being run on CLL 003 data.
+% Data obtained from paper, "Monitoring chronic lymphocytic leukemia progression by whole genome sequencing reveals heterogeneous clonal evolution patterns" 
+% Paper link is: http://www.bloodjournal.org/content/120/20/4191.long
+% these are the ground truth results results that Schuh et. al. has given for the CLL data set CLL 003 
 CLL3_T = [
 0 1 1 0 0
 0 0 0 0 0
@@ -31,6 +34,8 @@ CLL3_T_clust = [
 20 2
 ];
 
+% U1 is an ancestry matrix showing parent-child relationships between mutants, U appears in the PPM model as F = UM.
+% clust1 = clustering information to show which mutations belong to which cluster/node.
 U1 = CLL3_T;
 clust1 = CLL3_T_clust;
 
