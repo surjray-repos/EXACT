@@ -25,6 +25,7 @@
 % U = ancestry matrix showing parent-child relationships between mutants, U appears in the PPM model as F = UM.
 % clust = clustering information to show which mutations belong to which cluster/node.
 
+
 function [U, clust]	 = extract_U_mat_and_clust_from_canopy_output(canopy_output)
 
 	canopy_U_matrix = canopy_output{1};

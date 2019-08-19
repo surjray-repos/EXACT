@@ -11,6 +11,17 @@
 % GNU General Public License for more details.
 
 %% Function to calculate 4 error types from U matrices and clustering information for inferred tree vs ground truth tree
+
+% INPUTS:
+% ground_truth_Tree_matrix_on_clustered_nodes = ancestry matrix, for the ground truth tree, showing parent-child relationships between mutants, U appears in the PPM model as F = UM.
+% ground_truth_clusters = clustering information, for the ground truth tree, to show which mutations belong to which cluster/node.
+% U_recon = ancestry matrix, for the inferred tree, showing parent-child relationships between mutants, U appears in the PPM model as F = UM.
+% clusters_for_sol = clustering information, for the inferred tree, to show which mutations belong to which cluster/node.
+% OUTPUTS:
+% Details of computing the four error types are given in section 4.1 of our paper, "Exact inference under the perfect phylogeny model"
+% error_rates = error rates is an array object with 4 rows, each row containing the value of a particluar error type. 
+
+
 function [error_rates] = compare_trees_using_U_matrices_and_clustering(ground_truth_Tree_matrix_on_clustered_nodes, ground_truth_clusters, U_recon, clusters_for_sol)
     % compares observed tree with ground truth
     % go over one solution and compute the error
