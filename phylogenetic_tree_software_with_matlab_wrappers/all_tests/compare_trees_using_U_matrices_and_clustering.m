@@ -19,7 +19,13 @@
 % clusters_for_sol = clustering information, for the inferred tree, to show which mutations belong to which cluster/node.
 % OUTPUTS:
 % Details of computing the four error types are given in section 4.1 of our paper, "Exact inference under the perfect phylogeny model"
-% error_rates = error rates is an array object with 4 rows, each row containing the value of a particluar error type. 
+% when being contrasted with the ground truth tree, 
+% error type 1 checks whether the mutations are correctly clustered or not, 
+% error type 2 checks whether ancestral relations are being maintained correctly or not, 
+% error type 3 checks whether nodes that are incomparable in the ground truth tree display similar behavior in the inferred tree or not, and 
+% error type 4 checks whether all the input mutations show up in the inferred tree,
+% i.e. whether the inferred tree considers all the available mutation information or a subset of the mutations.
+% error_rates = error rates is an array object with 4 rows, each row containing the value of a particular error type. 
 
 
 function [error_rates] = compare_trees_using_U_matrices_and_clustering(ground_truth_Tree_matrix_on_clustered_nodes, ground_truth_clusters, U_recon, clusters_for_sol)

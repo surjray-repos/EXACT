@@ -4,6 +4,16 @@
 % Data obtained from paper, "Monitoring chronic lymphocytic leukemia progression by whole genome sequencing reveals heterogeneous clonal evolution patterns" 
 % Paper link is: http://www.bloodjournal.org/content/120/20/4191.long
 % these are the ground truth results results that Schuh et. al. has given for the CLL data set CLL 003 
+
+% OUTPUTS
+% exact_error_rates = array object with four rows, each row containing the value of a particular error type, for EXACT, contrasting the inferred tree vs the ground truth from Schuh et. al.
+% ancestree_error_rates = array object with four rows, each row containing the value of a particular error type, for AncesTree, contrasting the inferred tree vs the ground truth from Schuh et. al.
+% phylowgs_error_rates = array object with four rows, each row containing the value of a particular error type, for PhyloWGS, contrasting the inferred tree vs the ground truth from Schuh et. al.
+% citup_error_rates = array object with four rows, each row containing the value of a particular error type, for CITUP, contrasting the inferred tree vs the ground truth from Schuh et. al.
+% canopy_error_rates = array object with four rows, each row containing the value of a particular error type, for Canopy, contrasting the inferred tree vs the ground truth from Schuh et. al.
+
+
+% INPUTS
 CLL3_T = [
 0 1 1 0 0
 0 0 0 0 0
@@ -44,7 +54,7 @@ all_error_of_ancestry_relations = [ ];
 file_count_id = 23;
 
 %getting EXACT data for real file no. 23
-ourcode_output = load('/home/surjray/Dropbox/phylogenetic_tree_software_with_matlab_wrappers/all_tests/all_results/our_code_on_real_data_tree_sizes_6_9_top_20.mat','all_our_code_outputs');
+ourcode_output = load('/home/surjray/Phylogeny_repo/phylogenetic_tree_software_with_matlab_wrappers/all_tests/all_results/our_code_on_real_data_tree_sizes_6_9_top_20.mat','all_our_code_outputs');
 ourcode_output_check = ourcode_output.all_our_code_outputs{file_count_id};
 
 U2 = inv(eye(size(ourcode_output_check{3})) - ourcode_output_check{3});
@@ -54,7 +64,7 @@ clust2 = [ [1: length(ourcode_output_check{6})]' , ourcode_output_check{6}];
 [exact_error_rates] = compare_trees_using_U_matrices_and_clustering(U1, clust1, U2, clust2);
 
 %getting AncesTree data for real file no. 23
-ancestree_output = load('/home/surjray/Dropbox/phylogenetic_tree_software_with_matlab_wrappers/all_tests/all_results/ancestree_all_files_minus_a_few_ELKEBIR_real_data.mat','all_ancestree_output');
+ancestree_output = load('/home/surjray/Phylogeny_repo/phylogenetic_tree_software_with_matlab_wrappers/all_tests/all_results/ancestree_all_files_minus_a_few_ELKEBIR_real_data.mat','all_ancestree_output');
 ancestree_output = ancestree_output.all_ancestree_output{file_count_id};
 
 U2 = ancestree_output{3}{1};
@@ -70,7 +80,7 @@ end
 [ancestree_error_rates] = compare_trees_using_U_matrices_and_clustering(U1, clust1, U2, clust2);
 
 %getting PhyloWGS data for real file no. 23
-phyloWGS_output = load('/home/surjray/Dropbox/phylogenetic_tree_software_with_matlab_wrappers/all_tests/all_results/phyloWGS_all_files_ELKEBIR_real_data.mat','all_phylosub_outputs');
+phyloWGS_output = load('/home/surjray/Phylogeny_repo/phylogenetic_tree_software_with_matlab_wrappers/all_tests/all_results/phyloWGS_all_files_ELKEBIR_real_data.mat','all_phylosub_outputs');
 phyloWGS_output = phyloWGS_output.all_phylosub_outputs{file_count_id};
 
 U2 = phyloWGS_output{1}{1};
@@ -99,7 +109,7 @@ end
 [phylowgs_error_rates] = compare_trees_using_U_matrices_and_clustering(U1, clust1, U2, clust2);
 
 %getting CITUP data for real file no. 23
-citup_output = load('/home/surjray/Dropbox/phylogenetic_tree_software_with_matlab_wrappers/all_tests/all_results/citup_all_files_ELKEBIR_real_data.mat','all_citup_outputs');
+citup_output = load('/home/surjray/Phylogeny_repo/phylogenetic_tree_software_with_matlab_wrappers/all_tests/all_results/citup_all_files_ELKEBIR_real_data.mat','all_citup_outputs');
 citup_output = citup_output.all_citup_outputs{file_count_id};
 
 U2 = citup_output{1}{1}{1};
@@ -126,7 +136,7 @@ clust2(:,2) = 1 + clust2(:,2);
 [citup_error_rates] = compare_trees_using_U_matrices_and_clustering(U1, clust1, U2, clust2);
 
 %getting CANOPY data for real file no. 23
-canopy_output = load('/home/surjray/Dropbox/phylogenetic_tree_software_with_matlab_wrappers/all_tests/all_results/all_canopy_outputs_on_real_Elkebir_data.mat','all_canopy_outputs');
+canopy_output = load('/home/surjray/Phylogeny_repo/phylogenetic_tree_software_with_matlab_wrappers/all_tests/all_results/all_canopy_outputs_on_real_Elkebir_data.mat','all_canopy_outputs');
 canopy_output = canopy_output.all_canopy_outputs{file_count_id};
 
 [U2, clust2] = extract_U_mat_and_clust_from_canopy_output(canopy_output);
