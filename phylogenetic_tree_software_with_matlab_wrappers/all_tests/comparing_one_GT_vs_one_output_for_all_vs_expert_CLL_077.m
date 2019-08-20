@@ -12,8 +12,20 @@
 
 %% Comparing U and clust of CLL 077 expert drawn tree vs 
 % EXACT, AncesTree, PhyloWGS, CITUP and CANOPY
+% Data obtained from paper, "Monitoring chronic lymphocytic leukemia progression by whole genome sequencing reveals heterogeneous clonal evolution patterns" 
+% Paper link is: http://www.bloodjournal.org/content/120/20/4191.long
+% these are the ground truth results results that Schuh et. al. has given for the CLL data set CLL 077 
 
-%from expert drawn tree; PhyloWGS paper Fig.10 Deshwar et.al
+% OUTPUTS
+% exact_error_rates = array object with four rows, each row containing the value of a particular error type, for EXACT, contrasting the inferred tree vs the ground truth from Schuh et. al.
+% ancestree_error_rates = array object with four rows, each row containing the value of a particular error type, for AncesTree, contrasting the inferred tree vs the ground truth from Schuh et. al.
+% phylowgs_error_rates = array object with four rows, each row containing the value of a particular error type, for PhyloWGS, contrasting the inferred tree vs the ground truth from Schuh et. al.
+% citup_error_rates = array object with four rows, each row containing the value of a particular error type, for CITUP, contrasting the inferred tree vs the ground truth from Schuh et. al.
+% canopy_error_rates = array object with four rows, each row containing the value of a particular error type, for Canopy, contrasting the inferred tree vs the ground truth from Schuh et. al.
+
+
+% INPUTS
+% from expert drawn tree; PhyloWGS paper Fig.10 Deshwar et.al
 U1 = [1 1 0 0 0; 0 1 1 0 1; 0 0 1 1 0; 0 0 0 1 0; 0 0 0 0 1];
 clust1 = [1 2; 2 5; 3 3; 4 3; 5 3; 6 2; 7 5; 8 5; 9 4; 10 5; 11 2; 12 5; 13 3; 14 3; 15 2; 16 2];
 

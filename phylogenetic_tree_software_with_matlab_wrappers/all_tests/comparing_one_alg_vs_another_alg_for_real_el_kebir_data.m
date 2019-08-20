@@ -10,7 +10,22 @@
 % MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 % GNU General Public License for more details.
 
-%% 
+%% Calculation of the four error types for the various tools, contrasted against each other, pairwise.
+% The tools have been run on the the real data provided in the
+% AncesTree paper at https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4542783/
+% The results of one tool has been contrasted against the results of
+% another tool to calculate the errors. 
+% OUTPUTS:
+% Details of computing the four error types are given in section 4.1 of our paper, "Exact inference under the perfect phylogeny model"
+% when being contrasted with the ground truth tree, 
+% error type 1 checks whether the mutations are correctly clustered or not, 
+% error type 2 checks whether ancestral relations are being maintained correctly or not, 
+% error type 3 checks whether nodes that are incomparable in the ground truth tree display similar behavior in the inferred tree or not, and 
+% error type 4 checks whether all the input mutations show up in the inferred tree,
+% i.e. whether the inferred tree considers all the available mutation information or a subset of the mutations.
+% error_rates = error rates is an array object with 4 rows, each row containing the value of a particular error type. 
+% all_four_errors = array collecting the error_rates array for all 36 real files, for whichever pairwise comparison desired.
+
 
 clear all
 all_error_of_type_II = [ ];

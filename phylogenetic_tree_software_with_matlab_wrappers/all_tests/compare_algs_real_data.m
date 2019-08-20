@@ -14,7 +14,6 @@
 % The tools have been run on the the simulated data provided in the
 % AncesTree paper. The results have been contrasted against ground truth
 % provided in the same paper to calculate the errors.
-%load('/home/sam_safavi/Desktop/phylogenetic_tree_software_with_matlab_wrappers/all_tests/all_results/real_data_first_four_algs_errors_April_19.mat')
 
 phylowgs_exact_mean_error = mean(all_four_errors_phylowgs_exact,2);
 phylowgs_exact_mean_error_std = zeros(4,1);
