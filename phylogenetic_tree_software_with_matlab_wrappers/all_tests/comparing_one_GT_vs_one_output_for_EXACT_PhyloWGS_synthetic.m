@@ -1,5 +1,17 @@
+% Copyright (c) 2019 Surjyendu Ray
+% 
+% This program is free software: you can redistribute it and/or modify
+% it under the terms of the GNU General Public License as published by
+% the Free Software Foundation, either version 3 of the License, or
+% (at your option) any later version.
+% 
+% This program is distributed in the hope that it will be useful,
+% but WITHOUT ANY WARRANTY; without even the implied warranty of
+% MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+% GNU General Public License for more details.
+
 %% Comparing ground truth and output of EXACT across all 90 files
-%Compares all U matrices and clusters
+% Compares all U matrices and clusters
 
 start_folder = pwd;
 
@@ -61,8 +73,8 @@ for file_count_id = 1:90
 end
 
 %% Comparing ground truth and output of EXACT across all 90 files
-%Compares all U matrices and clusters and storing the errors for each tree
-%size separately, with the top k trees also
+% Compares all U matrices and clusters and storing the errors for each tree
+% size separately, with the top k trees also
 
 start_folder = pwd;
 
@@ -130,7 +142,7 @@ for file_count_id = 1:90
 end
 
 %% Comparing ground truth and output of phyloWGS across all 90 files
-%Compares all U matrices and clusters
+% Compares all U matrices and clusters
 all_error_of_ancestry_relations_phyloWGS_1 = [ ];
 all_error_of_ancestry_relations_phyloWGS_2 = [ ];
 all_error_of_ancestry_relations_phyloWGS_3 = [ ];
