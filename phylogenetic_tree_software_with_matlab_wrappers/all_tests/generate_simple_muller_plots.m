@@ -12,7 +12,7 @@
 
 %% Generates Muller plots from U ancestry matrix, mutant frequency and
 % related information
-function [h,lgd] = generate_simple_muller_plots(U,M,cum_nodelbs,node_col)
+function [h,lgd] = generate_simple_muller_plots(U, M, cum_nodelbs, node_col)
 
 % get sizes
 num_clust = size(M,1);

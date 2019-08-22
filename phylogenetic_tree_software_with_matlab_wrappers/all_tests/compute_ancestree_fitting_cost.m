@@ -10,6 +10,16 @@
 % MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 % GNU General Public License for more details.
 
+%% Matlab wrapper to compute the fiting cost for inferred trees by AncesTree
+
+% INPUTS: 
+% F_input = matrix with frequency of mutation values, each row is associated with a mutated position, each column is associated with a sample. 
+% clust = cluster membership information for the clustering. An array with 2 columns, the 2nd column designating the cluster ID, and the 1st column designating the mutation that belongs to that cluster
+% clean_F = recovered (clean) frequencies of clustered mutations.
+% OUTPUTS:
+% cost = fitting cost for the respective inferred tree 
+
+
 function cost = compute_ancestree_fitting_cost(F_input, clust, clean_F)
 
 	cost = 0;
