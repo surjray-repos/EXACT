@@ -1,3 +1,26 @@
+% Copyright (c) 2019 Surjyendu Ray
+% 
+% This program is free software: you can redistribute it and/or modify
+% it under the terms of the GNU General Public License as published by
+% the Free Software Foundation, either version 3 of the License, or
+% (at your option) any later version.
+% 
+% This program is distributed in the hope that it will be useful,
+% but WITHOUT ANY WARRANTY; without even the implied warranty of
+% MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+% GNU General Public License for more details.
+
+%% Function to plot the inferred trees from PhyloWGS output along with their respective fitting cost
+
+% INPUTS:
+% phylowgs_output is a matlab cell object having 3 components.
+% Each component is a cell object indexed by sol_id, which lists different good solutions.
+% The number of solutions that PhyloWGS outputs is given by how many different sol_id indices there are in the output 
+% phylowgs_output{1}{sol_id} = adjacency matrix for the sol_id th output tree. This is a directed tree. If we have this matrix T, then U = inv(I - T), where U appears in the PPM model as F = UM.
+% phylowgs_output{2}{sol_id} = cluster membership information for the clustering. An array with 2 columns, the 2nd column designating the cluster ID, and the 1st column designating the mutation that belongs to that cluster
+% phylowgs_output{3}{sol_id} = frequencies of the input, after mutations have been clustered, helps in obtaining clustered frequencies of mutants.
+
+
 function generate_list_of_PhyloWGS_trees(phylowgs_output)
 
 	figure;

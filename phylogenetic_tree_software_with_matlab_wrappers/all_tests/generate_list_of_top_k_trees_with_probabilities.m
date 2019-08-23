@@ -1,4 +1,24 @@
-function generate_list_of_top_k_trees_with_probabilities(display_top_k,top_k_value, max_tree_size, min_tree_size, error_rate, ourcode_all_Ms, ourcode_output)
+% Copyright (c) 2019 Surjyendu Ray
+% 
+% This program is free software: you can redistribute it and/or modify
+% it under the terms of the GNU General Public License as published by
+% the Free Software Foundation, either version 3 of the License, or
+% (at your option) any later version.
+% 
+% This program is distributed in the hope that it will be useful,
+% but WITHOUT ANY WARRANTY; without even the implied warranty of
+% MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+% GNU General Public License for more details.
+
+%% Function to plot the inferred trees from EXACT output along with their respective probabilities
+
+% INPUT
+% display_top_k = how many top scoring inferred trees we want as output in the plot
+% top_k_value = 
+
+
+
+function generate_list_of_top_k_trees_with_probabilities(display_top_k, top_k_value, max_tree_size, min_tree_size, error_rate, ourcode_all_Ms, ourcode_output)
 
 	figure;
 
