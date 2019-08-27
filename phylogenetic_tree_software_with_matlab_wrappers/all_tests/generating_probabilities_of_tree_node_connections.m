@@ -1,3 +1,18 @@
+% Copyright (c) 2019 Surjyendu Ray
+% 
+% This program is free software: you can redistribute it and/or modify
+% it under the terms of the GNU General Public License as published by
+% the Free Software Foundation, either version 3 of the License, or
+% (at your option) any later version.
+% 
+% This program is distributed in the hope that it will be useful,
+% but WITHOUT ANY WARRANTY; without even the implied warranty of
+% MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+% GNU General Public License for more details.
+
+%% Plotting the marginal probabilities of pairs of mutations that are connected from the 100 most likely trees output by EXACT
+
+% Loading the EXACT results on each of the real data files 
 load('/home/surjray/Phylogeny_repo/phylogenetic_tree_software_with_matlab_wrappers/all_tests/all_results/our_code_on_real_data_tree_sizes_6_to_10_top_100trees.mat','all_our_code_outputs');
 
 %%
