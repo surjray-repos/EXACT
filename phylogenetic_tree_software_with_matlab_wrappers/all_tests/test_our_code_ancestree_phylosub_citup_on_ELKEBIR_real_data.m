@@ -16,8 +16,11 @@ addpath(genpath('../EXACT/'));
 addpath(genpath('../AncesTree/'));
 addpath(genpath('../citup'));
 addpath(genpath('../phylowgs'));
+addpath(genpath('../Canopy/'));
 
-%% process all the files
+%% process all 36 real data files, provided in the AncesTree paper
+% More information for the data is found at:
+% https://github.com/raphael-group/AncesTree/tree/master/data/real
 
 pwd_start = pwd;
 
@@ -31,6 +34,12 @@ all_our_code_outputs = {};
 
 count_files_tested = 0;
 
+% This option helps choose which tool we wish to run
+% 1 = AncesTree
+% 2 = CITUP
+% 3 = PhyloWGS
+% 4 = EXACT
+% 5 = Canopy
 tools_to_test = [4];
 
 workspace_file_name = datestr(datetime);
@@ -45,7 +54,7 @@ for file_ix = 3: size(all_input_files_in_folder,1)
 
     count_files_tested = count_files_tested + 1;
     
-    if ( count_files_tested >= 27 && count_files_tested <= 28)
+    if ( count_files_tested >= 1)
         input_file_name = all_input_files_in_folder(file_ix).name;
         
         full_input_file_name = [start_directory,'/',input_file_name];
@@ -101,10 +110,8 @@ for file_ix = 3: size(all_input_files_in_folder,1)
             all_citup_outputs{count_files_tested} = {citup_output, all_inter_sol};
         else
             all_citup_outputs{count_files_tested} = nan;
-        end
-        
-        
-        
+		end
+		
         %% here we run phyloWGS on the data
         scale = scaling;
         
