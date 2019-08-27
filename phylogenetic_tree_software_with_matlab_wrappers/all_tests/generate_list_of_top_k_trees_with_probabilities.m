@@ -16,7 +16,25 @@
 % display_top_k = how many top scoring inferred trees we want as output in the plot
 % top_k_value = how many top k best trees we want as output
 % max_tree_size, min_tree_size = maximum and minimum tree size to explore during inference
-% error_rate = 
+% error_rate = 0.5 * sqrt (estimated variance of the samples)
+% ourcode_all_Ms is a matlab cell object with k_best cells (indexed by sol_id here), each cell storing 
+%	ourcode_all_Ms{sol_id}{1} = likelihood score of the sold_id tree
+%	ourcode_all_Ms{sol_id}{2} = Bayesian information criteria score
+%	ourcode_all_Ms{sol_id}{3} = adjacency matrix for the sold_id tree. This is a directed tree. If we can this matrix T, the U = inv(I - T), where U appears in the PPM model as F = UM.
+%	ourcode_all_Ms{sol_id}{4} = recovered (clean) frequencies of mutations
+%	ourcode_all_Ms{sol_id}{5} = clustered frequencies of mutations
+%	ourcode_all_Ms{sol_id}{6} = cluster membership information, the number in column 1 of each row designating which cluster/node each mutation (row number) belongs to.
+%	ourcode_all_Ms{sol_id}{7} = run time (in seconds) for the executable to infer the sol_id tree among all trees of the same size while keeping track of all k_best trees
+% ourcode_output is a matlab cell object having 7 components, namely, 
+% where
+%	ourcode_output{1} = likelihood score of the best tree as computed by the BIC criterion
+%	ourcode_output{2} = Bayesian information criteria score
+%	ourcode_output{3} = adjacency matrix for the best tree. This is a directed tree. If we have this matrix T, then U = inv(I - T), where U appears in the PPM model as F = UM.
+%	ourcode_output{4} = recovered (clean) frequencies of mutations
+%	ourcode_output{5} = clustered frequencies of mutants
+%	ourcode_output{6} = cluster membership information, each row designates which particular cluster/node that particular mutation belongs to.
+%	ourcode_output{7} = run time (in seconds) for the executable to infer the best tree among all trees of the same size while keeping track of all k_best trees
+
 
 function generate_list_of_top_k_trees_with_probabilities(display_top_k, top_k_value, max_tree_size, min_tree_size, error_rate, ourcode_all_Ms, ourcode_output)
 
