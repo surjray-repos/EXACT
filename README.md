@@ -5,6 +5,6 @@ This repository includes code for EXACT, as well as code, and Matlab wrappers, f
 
 We include source code for tool inside each respective folder. The code for the four competing tools was obtained from their respective repositories, and are included here for convinience (https://github.com/raphael-group/AncesTreel; https://github.com/yuchaojiang/Canopy; https://github.com/sfu-compbio/citup; https://github.com/morrislab/phylowgs)
 
-The performance comparison of the different tools is reported in [Exact Inference under the Perfect Phylogeny Model](https://arxiv.org/abs/1908.08623)
+The performance comparison of the different tools is reported in [Exact Inference under the Perfect Phylogeny Model.](https://arxiv.org/abs/1908.08623)
 
 EXACT is under constant development. As a result, some features might be temporarily unavailable.
