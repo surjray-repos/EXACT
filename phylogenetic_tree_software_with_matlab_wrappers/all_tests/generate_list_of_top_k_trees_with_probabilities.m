@@ -14,9 +14,9 @@
 
 % INPUT
 % display_top_k = how many top scoring inferred trees we want as output in the plot
-% top_k_value = 
-
-
+% top_k_value = how many top k best trees we want as output
+% max_tree_size, min_tree_size = maximum and minimum tree size to explore during inference
+% error_rate = 
 
 function generate_list_of_top_k_trees_with_probabilities(display_top_k, top_k_value, max_tree_size, min_tree_size, error_rate, ourcode_all_Ms, ourcode_output)
 
