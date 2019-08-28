@@ -193,7 +193,7 @@ for folder_ix = 3: size(all_folders,1)
             all_phylosub_outputs{count_files_tested} = nan;
         end
         
-        %% run our code on the data
+        %% here we run EXACT on the data
         
         path_to_folder = [pwd_start, '/../EXACT/distribution/'];
         exec_name = 'EXACT_executable_x64_CUDA.out';
@@ -238,9 +238,8 @@ for folder_ix = 3: size(all_folders,1)
 		end
         
 		%% here we run Canopy on the simulated data
-		%File name for the Ancestree format file to transform and input to Canopy		
-		%Here input_file will serve as the variable containing the full
-		%file name for the Ancestree input file
+		% File name for the Ancestree format file to transform and input to Canopy		
+		% Here the input_file will serve as the variable containing the full file name for the Ancestree input file
 		
 		path_to_folder = [pwd_start, '/../Canopy/demo_code/'];
 		
@@ -258,6 +257,15 @@ for folder_ix = 3: size(all_folders,1)
 		
 		%Calling the canopy_input_file_maker_function to transform input and run
 		%Canopy inside a Rscript call
+		% all_canopy_outputs is a matlab cell object having 7 components.
+		% all_canopy_outputs{1} = matrix representation of a tumor's clonal composition. Z_sk is the indicator of whether the s'th SNA is present at the k'th clone.
+		% all_canopy_outputs{2} = clustered frequencies of mutants
+		% all_canopy_outputs{3} = records which mutations (rows) in M_canopy_output{1} are clustered together. This record takes the form of a cell array. The i'th cell is an array that lists the rows that belong to the i'th cluster.
+		% all_canopy_outputs{4} = records which clones (columns) in the M_canopy_output{1} are clustered together. This record takes the form of a cell array. The i'th cell is an array that lists the columns that belong to the i'th cluster.
+		% all_canopy_outputs{5} = pre MCMC clustering. An array with 2 columns. A row of the form [i, j] signfies that the mutation j belongs to cluster i.
+		% all_canopy_outputs{6} = post MCMC final cluster membership information for the clustering. An array with 2 columns. A row of the form [i, j] signfies that the mutation j belongs to cluster i.
+		% all_canopy_outputs{7} = run time (in seconds) for the Canopy executable to infer the best tree.
+		
 		if (ismember(5, tools_to_test))
             [canopy_output] = canopy_wrapper(input_file, path_to_folder, burnin_val, thin_val, K_min_val, K_max_val, numchains_val, maxsimrun_val, minsimrun_val, writeskip_val, cluster_number_start, cluster_number_end);
 			all_canopy_outputs{count_files_tested} = canopy_output;
