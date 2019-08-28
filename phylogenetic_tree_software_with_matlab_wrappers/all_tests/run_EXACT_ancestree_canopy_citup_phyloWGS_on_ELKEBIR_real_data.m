@@ -112,9 +112,23 @@ for file_ix = 3: size(all_input_files_in_folder,1)
         %cluster_no = 8; % here we make the number of clusters be equal to the size of the input tree
         citup_error_rate = 0.03;
         
-        %call our CITUP wrapper
-        %[citup_output] = count_general_wrapper_CITUP_bowie2_OC_ll(F_from_SampleData, wrapper_working_directory, cluster_no, CITUP_executable_path, citup_error_rate);
-        
+        % call the CITUP tool using CITUP_wrapper_diff_clust_size
+		% citup_output is a matlab cell object having 5 components, containg the best tree found using a
+		% quadratic fitting cost and a Bayesian Information Criterion to select the
+		% output tree size
+		%	citup_output{1}{1} = adjacency matrix for the best output tree. This is a directed tree. If we have this matrix T, then U = inv(I - T), where U appears in the PPM model as F = UM.
+		%	citup_output{2} = cluster membership information for the clustering. An array with 2 columns, the 2nd column designating the cluster ID, and the 1st column designating the mutation that belongs to that cluster
+		%	citup_output{3}{1} = clustered frequencies of mutants. Rows are associated with samples, and columns with mutants
+		%	citup_output{4}{1} = recovered (clean) frequencies of clustered mutations. Rows are associated with samples, and columns with mutations
+		%	Note that citup_output{4}{1}' = U * citup_output{3}{1}'
+		%	citup_output{5} = frequencies of clustered-mutations after the kmeans preclustering
+		% all_inter_sol contains all the best tree found by CITUP for each tree size in the range min_clust_no and max_clust_no, indexed by tree_size_id here, each cell storing
+		%	all_inter_sol{tree_size_id}{1}{1} = adjacency matrix for the optimal output tree. This is a directed tree. If we have this matrix T, then U = inv(I - T), where U appears in the PPM model as F = UM.
+		%	all_inter_sol{tree_size_id}{2} = cluster membership information for the clustering. An array with 2 columns, the 2nd column designating the cluster ID, and the 1st column designating the mutation that belongs to that cluster
+		%	all_inter_sol{tree_size_id}{3}{1} =  clustered frequencies of mutants. Rows are associated with samples, and columns with mutants
+		%	all_inter_sol{tree_size_id}{4}{1} = recovered (clean) frequencies of clustered mutations. Rows are associated with samples, and columns with mutations
+		%	all_inter_sol{tree_size_id}{5} =  frequencies of clustered-mutations after the kmeans preclustering
+		
         if (ismember(2,tools_to_test))
             %[~, citup_output] = count_general_wrapper_CITUP_BIC_ll( F_from_SampleData, wrapper_working_directory, 5,8, CITUP_executable_path, citup_error_rate )
             [~, citup_output, all_inter_sol] = CITUP_wrapper_diff_clust_size( F_from_SampleData, wrapper_working_directory, min_cluster_no, max_cluster_no, CITUP_executable_path, citup_error_rate )
@@ -127,12 +141,20 @@ for file_ix = 3: size(all_input_files_in_folder,1)
         %% here we run phyloWGS on the data
         scale = scaling;
         
-        %Constants for PhyloWGS, should not be changed for sequencing data
-        %one = 1;
+        % Constants for PhyloWGS, should not be changed for sequencing data
+        % one = 1;
         mu_r = 0.999;
         mu_v = 0.5;
         wrapper_working_directory = [pwd_start,'/../phylowgs/'];
         phylowgs_executable_path = [pwd_start,'/../phylowgs/'];
+		
+		% call the phyloWGS tool using PhyloWGS_wrapper
+		% phylowgs_output is a matlab cell object having 3 components.
+		% Each component is a cell object indexed by sol_id, which lists different good solutions.
+		% The number of solutions that PhyloWGS outputs is given by how many different sol_id indices there are in the output
+		% phylowgs_output{1}{sol_id} = adjacency matrix for the sol_id th output tree. This is a directed tree. If we have this matrix T, then U = inv(I - T), where U appears in the PPM model as F = UM.
+		% phylowgs_output{2}{sol_id} = cluster membership information for the clustering. An array with 2 columns, the 2nd column designating the cluster ID, and the 1st column designating the mutation that belongs to that cluster
+		% phylowgs_output{3}{sol_id} = frequencies of the input, after mutations have been clustered, helps in obtaining clustered frequencies of mutants.
         
         if (ismember(3,tools_to_test))
             [phylowgs_output] = count_general_wrapper_PhyloWGS_allow_duplicates_ll(F_from_SampleData, scale, wrapper_working_directory, phylowgs_executable_path, mu_r, mu_v);
@@ -158,6 +180,25 @@ for file_ix = 3: size(all_input_files_in_folder,1)
         CUDA_blocks = 128;
         top_k_value = 100;
         
+		% call the EXACT tool using EXACT_wrapper_diff_tree_size
+		% best_M is a matlab cell object having 7 components, namely, 
+		% where
+		%	ourcode_output{1} = likelihood score of the best tree as computed by the BIC criterion
+		%	ourcode_output{2} = Bayesian information criteria score
+		%	ourcode_output{3} = adjacency matrix for the best tree. This is a directed tree. If we have this matrix T, then U = inv(I - T), where U appears in the PPM model as F = UM.
+		%	ourcode_output{4} = recovered (clean) frequencies of mutations
+		%	ourcode_output{5} = clustered frequencies of mutants
+		%	ourcode_output{6} = cluster membership information, each row designates which particular cluster/node that particular mutation belongs to.
+		%	ourcode_output{7} = run time (in seconds) for the executable to infer the best tree among all trees of the same size while keeping track of all k_best trees
+		% best_bic = best_M{2}
+		% all_Ms is a matlab cell object with top_k_value cells (indexed by sol_id here), each cell storing
+		%	ourcode_all_Ms{sol_id}{1} = likelihood score of the sold_id tree
+		%	ourcode_all_Ms{sol_id}{2} = Bayesian information criteria score
+		%	ourcode_all_Ms{sol_id}{3} = adjacency matrix for the sold_id tree. This is a directed tree. If we can this matrix T, the U = inv(I - T), where U appears in the PPM model as F = UM.
+		%	ourcode_all_Ms{sol_id}{4} = recovered (clean) frequencies of mutations
+		%	ourcode_all_Ms{sol_id}{5} = clustered frequencies of mutations
+		%	ourcode_all_Ms{sol_id}{6} = cluster membership information, the number in column 1 of each row designating which cluster/node each mutation (row number) belongs to.
+		%	ourcode_all_Ms{sol_id}{7} = run time (in seconds) for the executable to infer the sol_id tree among all trees of the same size while keeping track of all k_best trees
         
         if (ismember(4,tools_to_test))
             [best_M, best_bic, all_Ms] = EXACT_wrapper_diff_tree_size(F_from_SampleData, error_rate, min_tree_size, max_tree_size, path_to_folder, exec_name, cpu_gpu, cost_function, top_k_value, GPU_id, num_CPU_cores, max_num_partitions, device_tree_subset_value, CUDA_threads_per_block, CUDA_blocks );
@@ -187,8 +228,17 @@ for file_ix = 3: size(all_input_files_in_folder,1)
 		cluster_number_start = 2;
 		cluster_number_end = 9; % we use 9 for all files except 90
 		
-		%Calling the canopy_input_file_maker_function to transform input and run
-		%Canopy inside a Rscript call
+		% Calling the canopy_input_file_maker_function to transform input and run
+		% Canopy inside a Rscript call
+		% all_canopy_outputs is a matlab cell object having 7 components.
+		% all_canopy_outputs{1} = matrix representation of a tumor's clonal composition. Z_sk is the indicator of whether the s'th SNA is present at the k'th clone.
+		% all_canopy_outputs{2} = clustered frequencies of mutants
+		% all_canopy_outputs{3} = records which mutations (rows) in M_canopy_output{1} are clustered together. This record takes the form of a cell array. The i'th cell is an array that lists the rows that belong to the i'th cluster.
+		% all_canopy_outputs{4} = records which clones (columns) in the M_canopy_output{1} are clustered together. This record takes the form of a cell array. The i'th cell is an array that lists the columns that belong to the i'th cluster.
+		% all_canopy_outputs{5} = pre MCMC clustering. An array with 2 columns. A row of the form [i, j] signfies that the mutation j belongs to cluster i.
+		% all_canopy_outputs{6} = post MCMC final cluster membership information for the clustering. An array with 2 columns. A row of the form [i, j] signfies that the mutation j belongs to cluster i.
+		% all_canopy_outputs{7} = run time (in seconds) for the Canopy executable to infer the best tree.
+		
 		if (ismember(5,tools_to_test))
             [canopy_output] = canopy_wrapper(input_file, path_to_folder, burnin_val, thin_val, K_min_val, K_max_val, numchains_val, maxsimrun_val, minsimrun_val, writeskip_val, cluster_number_start, cluster_number_end);
 			all_canopy_outputs{count_files_tested} = canopy_output;

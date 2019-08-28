@@ -255,8 +255,8 @@ for folder_ix = 3: size(all_folders,1)
 		cluster_number_start = 2;
 		cluster_number_end = 7; % we use 9 for all files except 90
 		
-		%Calling the canopy_input_file_maker_function to transform input and run
-		%Canopy inside a Rscript call
+		% Calling the canopy_input_file_maker_function to transform input and run
+		% Canopy inside a Rscript call
 		% all_canopy_outputs is a matlab cell object having 7 components.
 		% all_canopy_outputs{1} = matrix representation of a tumor's clonal composition. Z_sk is the indicator of whether the s'th SNA is present at the k'th clone.
 		% all_canopy_outputs{2} = clustered frequencies of mutants
