@@ -1,11 +1,15 @@
 %% example of how to use Ancestree
 
+% adding path for the AncesTree folders
+addpath(genpath(pwd));
+
 % input file
-input_file = '/home/surjray/Phylogeny_repo/phylogenetic_tree_software_with_matlab_wrappers/all_tests/Sample_test_data/AncesTree_data/simulated/Cov_1000_Samples_4_Mut_100_Clone_10_PCR_Removed/sim_1.input';
+pwd_AncesTree = pwd;
+input_file = [pwd_AncesTree, '/../all_tests/Sample_test_data/AncesTree_data/simulated/Cov_1000_Samples_4_Mut_100_Clone_10_PCR_Removed/sim_1.input'];
 [F_from_SampleData, scaling] =  transform_elkebir_input_data_into_F_matrix(input_file);
 
 % load groud truth
-ground_truth_file = '/home/surjray/Phylogeny_repo/phylogenetic_tree_software_with_matlab_wrappers/all_tests/Sample_test_data/AncesTree_data/simulated/Cov_1000_Samples_4_Mut_100_Clone_10_PCR_Removed/sim_1.true';
+ground_truth_file = [pwd_AncesTree, '/../all_tests/Sample_test_data/AncesTree_data/simulated/Cov_1000_Samples_4_Mut_100_Clone_10_PCR_Removed/sim_1.true'];
 [true_tree_data] =  read_ground_truth_from_elkebir_data(ground_truth_file);
 Ugt = true_tree_data{3}';
 clustgt = true_tree_data{5};
@@ -20,8 +24,8 @@ scale = scaling;
 alpha = 0.3; % if alpha is big, lots of things will be clustered together
 beta = 0.8; % to choose a larger beta we need more samples , i.e. larger T_samples
 gamma = 0.01; % small gamma means larger confidence on the data
-wrapper_working_directory = [pwd, '/distribution/'];
-ancestree_executable_path = [pwd, '/distribution/build/ancestree'];
+wrapper_working_directory = [pwd_AncesTree, '/distribution/'];
+ancestree_executable_path = [pwd_AncesTree, '/distribution/build/ancestree'];
 
 % run AncesTree
 ancestree_output = ancestree_wrapper(F_from_SampleData, scale, alpha, beta, gamma, wrapper_working_directory, ancestree_executable_path);
