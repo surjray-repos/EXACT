@@ -78,7 +78,7 @@ figure;
 h=plot(G);
 labelnode(h,1:length(clust_names), clust_names)
 %h.NodeFontSize = 14;
-colormap jet           % select color palette 
+colormap summer           % select color palette 
 h.EdgeCData=weight;    % define edge colors
 %h.MarkerSize=10*rand(1,length(prob_of_connection)); % define node size
 %h.XData=Loc(:,1);      % place node locations on plot

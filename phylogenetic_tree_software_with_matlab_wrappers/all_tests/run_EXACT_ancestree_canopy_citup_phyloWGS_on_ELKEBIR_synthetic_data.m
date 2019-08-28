@@ -210,9 +210,28 @@ for folder_ix = 3: size(all_folders,1)
         CUDA_blocks = 128;
         top_k_value = 20;
         
-        
+        % call the EXACT tool using EXACT_wrapper_diff_tree_size
+		% best_M is a matlab cell object having 7 components, namely, 
+		% where
+		%	ourcode_output{1} = likelihood score of the best tree as computed by the BIC criterion
+		%	ourcode_output{2} = Bayesian information criteria score
+		%	ourcode_output{3} = adjacency matrix for the best tree. This is a directed tree. If we have this matrix T, then U = inv(I - T), where U appears in the PPM model as F = UM.
+		%	ourcode_output{4} = recovered (clean) frequencies of mutations
+		%	ourcode_output{5} = clustered frequencies of mutants
+		%	ourcode_output{6} = cluster membership information, each row designates which particular cluster/node that particular mutation belongs to.
+		%	ourcode_output{7} = run time (in seconds) for the executable to infer the best tree among all trees of the same size while keeping track of all k_best trees
+		% best_bic = best_M{2}
+		% all_Ms is a matlab cell object with top_k_value cells (indexed by sol_id here), each cell storing
+		%	ourcode_all_Ms{sol_id}{1} = likelihood score of the sold_id tree
+		%	ourcode_all_Ms{sol_id}{2} = Bayesian information criteria score
+		%	ourcode_all_Ms{sol_id}{3} = adjacency matrix for the sold_id tree. This is a directed tree. If we can this matrix T, the U = inv(I - T), where U appears in the PPM model as F = UM.
+		%	ourcode_all_Ms{sol_id}{4} = recovered (clean) frequencies of mutations
+		%	ourcode_all_Ms{sol_id}{5} = clustered frequencies of mutations
+		%	ourcode_all_Ms{sol_id}{6} = cluster membership information, the number in column 1 of each row designating which cluster/node each mutation (row number) belongs to.
+		%	ourcode_all_Ms{sol_id}{7} = run time (in seconds) for the executable to infer the sol_id tree among all trees of the same size while keeping track of all k_best trees
+
         if (ismember(4, tools_to_test))
-            [ourcode_output] = EXACT_wrapper_diff_tree_size(F_from_SampleData, error_rate, min_tree_size, max_tree_size, path_to_folder, exec_name, cpu_gpu, cost_function, top_k_value, GPU_id, num_CPU_cores, max_num_partitions, device_tree_subset_value, CUDA_threads_per_block, CUDA_blocks);
+            [ourcode_output, best_bic, ourcode_all_Ms] = EXACT_wrapper_diff_tree_size(F_from_SampleData, error_rate, min_tree_size, max_tree_size, path_to_folder, exec_name, cpu_gpu, cost_function, top_k_value, GPU_id, num_CPU_cores, max_num_partitions, device_tree_subset_value, CUDA_threads_per_block, CUDA_blocks);
             all_our_code_outputs{count_files_tested} = ourcode_output;
         else
             all_our_code_outputs{count_files_tested} = nan;
