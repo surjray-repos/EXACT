@@ -78,10 +78,22 @@ for file_ix = 3: size(all_input_files_in_folder,1)
         wrapper_working_directory = [pwd_start, '/../AncesTree/distribution/'];
         ancestree_executable_path = [pwd_start, '/../AncesTree/distribution/build/ancestree'];
         
-        % call ancestree
-        %ancestree_output = ancestree_wrapper_ll(F_from_SampleData, scale, alpha, beta, gamma, wrapper_working_directory, ancestree_executable_path);
-        %ancestree_output = ancestree_wrapper_ll_noTransform(input_file,  alpha, beta, gamma, wrapper_working_directory, ancestree_executable_path);
-        
+        % call the ancestree tool using ancestree_wrapper
+		% ancestree_output is a matlab cell object having 6 components.
+		% The first four components are in turn a cell object indexed by sol_id, which lists different good solutions.
+		% The number of solutions that AncesTree outputs is given by how many different sol_id indices there are in the output
+		%	ancestree_output{1}{sol_id} = recovered (clean) frequencies of clustered mutations.
+		%	Each row is associated to a different sample, and each column to a different cluster of mutations
+		%	ancestree_output{2}{sol_id} = clustered frequencies of mutants
+		%	ancestree_output{3}{sol_id} = adjacency matrix for the optimal tree. This is a directed tree. If we have this matrix T, then U = inv(I - T), where U appears in the PPM model as F = UM.
+		%	ancestree_output{4}{sol_id} = cluster membership information for the clustering
+		%	associated to M{2}{sol_id} in the form of a cell array. The ith cell is
+		%	an array that lists the nodes that belong to the ith cluster. These clusters are a subset of the clusters in M{6}
+		%
+		% The last two components are not indexed by sol_id, and are the same for all of the solutions that AncesTree outputs
+		%	ancestree_output{5} = F_reduced'/2
+		%	ancestree_output{6} = pre-clustering of mutations. An array with 2 columns, the 1st column designating the cluster ID, and the 2nd column designating the mutation that belongs to that cluster
+
         if (  ismember(1,tools_to_test) )
             ancestree_output = ancestree_wrapper(F_from_SampleData, scale, alpha, beta, gamma, wrapper_working_directory, ancestree_executable_path);
             %ancestree_output = ancestree_wrapper_reading_only_sol_file_noTransform(F_from_SampleData, input_file, scale, alpha, beta, gamma, wrapper_working_directory, ancestree_executable_path);
