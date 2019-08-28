@@ -135,8 +135,8 @@ switch alg
 		% Comparing with AncesTree
 		output_1  = all_ancestree_output{file_ix};
 		sol_ix = 1;
-        U2 = output_1{3}{sol_ix};
-        U2 = inv(eye(length(U2)) - U2);
+        	U2 = output_1{3}{sol_ix};
+        	U2 = inv(eye(length(U2)) - U2);
 		
 		M_target = output_1{2}{sol_ix}';
 	case 4
