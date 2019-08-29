@@ -1,13 +1,18 @@
 %% example of how to use Ancestree
 
+% first install CVX, if it is not install yet
+% we recommend downloading, and installing, the latest CVX version from
+% www.cvxr.com/cvx
+run([pwd, '/../EXACT/distribution/cvx/cvx/cvx_setup']);
+
 % adding path for the AncesTree folders
 addpath(genpath(pwd));
 
 % to find functions to produce plots and compute errors
-pwd_AncesTree = pwd;
-addpath([pwd_AncesTree, '/../all_tests/');
+addpath([pwd, '/../all_tests/']);
 
 % input file
+pwd_AncesTree = pwd;
 input_file = [pwd_AncesTree, '/../all_tests/Sample_test_data/AncesTree_data/simulated/Cov_1000_Samples_4_Mut_100_Clone_10_PCR_Removed/sim_1.input'];
 [F_from_SampleData, scaling] =  transform_elkebir_input_data_into_F_matrix(input_file);
 
