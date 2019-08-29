@@ -8,18 +8,22 @@ run([pwd, '/distribution/cvx/cvx/cvx_setup']);
 % to find functions to produce plots and compute errors
 addpath('../../all_tests/');
 
+% adding path for the AncesTree folders
+addpath(genpath(pwd));
+
 % input file
-input_file = '/home/surjray/Phylogeny_repo/phylogenetic_tree_software_with_matlab_wrappers/all_tests/Sample_test_data/AncesTree_data/simulated/Cov_1000_Samples_6_Mut_100_Clone_10_PCR_Removed/sim_4.input';
+pwd_EXACT = pwd;
+input_file = [pwd_EXACT, '/../all_tests/Sample_test_data/AncesTree_data/simulated/Cov_1000_Samples_6_Mut_100_Clone_10_PCR_Removed/sim_4.input'];
 [F_from_SampleData, scaling] =  transform_elkebir_input_data_into_F_matrix(input_file);
 
 % load groud truth
-ground_truth_file = '/home/surjray/Phylogeny_repo/phylogenetic_tree_software_with_matlab_wrappers/all_tests/Sample_test_data/AncesTree_data/simulated/Cov_1000_Samples_6_Mut_100_Clone_10_PCR_Removed/sim_4.true';
+ground_truth_file = [pwd_EXACT, '/../all_tests/Sample_test_data/AncesTree_data/simulated/Cov_1000_Samples_6_Mut_100_Clone_10_PCR_Removed/sim_4.true'];
 [true_tree_data] =  read_ground_truth_from_elkebir_data(ground_truth_file);
 Ugt = true_tree_data{3}';
 clustgt = true_tree_data{5};
 
 % EXACT parameters
-path_to_folder = [pwd, '/distribution/'];
+path_to_folder = [pwd_EXACT, '/distribution/'];
 exec_name = 'EXACT_executable_x64_CUDA.out';
 cost_function = 'cost1'; %possible options: cost1, cost2, cost3, cost4
 cpu_gpu = 'cpu_multithread'; %possible options: cpu, cpu_multithread, gpu
