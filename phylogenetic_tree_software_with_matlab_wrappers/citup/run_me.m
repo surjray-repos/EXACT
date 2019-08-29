@@ -1,18 +1,22 @@
 %% example of how to use CITUP
 
+% adding path for the CITUP folders
+addpath(genpath(pwd));
+
 % input file
-input_file = '/home/surjray/Phylogeny_repo/phylogenetic_tree_software_with_matlab_wrappers/all_tests/Sample_test_data/AncesTree_data/simulated/Cov_1000_Samples_6_Mut_100_Clone_10_PCR_Removed/sim_4.input';
+pwd_CITUP = pwd;
+input_file = [pwd_CITUP, '/../all_tests/Sample_test_data/AncesTree_data/simulated/Cov_1000_Samples_6_Mut_100_Clone_10_PCR_Removed/sim_4.input'];
 [F_from_SampleData, scaling] =  transform_elkebir_input_data_into_F_matrix(input_file);
 
 % load groud truth
-ground_truth_file = '/home/surjray/Phylogeny_repo/phylogenetic_tree_software_with_matlab_wrappers/all_tests/Sample_test_data/AncesTree_data/simulated/Cov_1000_Samples_6_Mut_100_Clone_10_PCR_Removed/sim_4.true';
+ground_truth_file = [pwd_CITUP, '/../all_tests/Sample_test_data/AncesTree_data/simulated/Cov_1000_Samples_6_Mut_100_Clone_10_PCR_Removed/sim_4.true'];
 [true_tree_data] =  read_ground_truth_from_elkebir_data(ground_truth_file);
 Ugt = true_tree_data{3}';
 clustgt = true_tree_data{5};
 
 % parameters
-wrapper_working_directory = [pwd,'/distribution/'];
-CITUP_executable_path = [pwd,'/distribution/bin/'];
+wrapper_working_directory = [pwd_CITUP,'/distribution/'];
+CITUP_executable_path = [pwd_CITUP,'/distribution/bin/'];
 min_cluster_no = 5; % here we make the number of clusters be equal to the size of the input tree
 max_cluster_no = 8;
 citup_error_rate = 0.03;
