@@ -1,13 +1,13 @@
 %% example of how to use Ancestree
 
-% to find functions to produce plots and compute errors
-addpath('../../all_tests/');
-
 % adding path for the AncesTree folders
 addpath(genpath(pwd));
 
-% input file
+% to find functions to produce plots and compute errors
 pwd_AncesTree = pwd;
+addpath([pwd_AncesTree, '/../all_tests/');
+
+% input file
 input_file = [pwd_AncesTree, '/../all_tests/Sample_test_data/AncesTree_data/simulated/Cov_1000_Samples_4_Mut_100_Clone_10_PCR_Removed/sim_1.input'];
 [F_from_SampleData, scaling] =  transform_elkebir_input_data_into_F_matrix(input_file);
 
