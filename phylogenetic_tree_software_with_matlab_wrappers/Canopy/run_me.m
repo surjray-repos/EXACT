@@ -1,5 +1,8 @@
 %% example of how to use Canopy
 
+% to find functions to produce plots and compute errors
+addpath('../../all_tests/');
+
 % adding path for the Canopy folders
 addpath(genpath(pwd));
 

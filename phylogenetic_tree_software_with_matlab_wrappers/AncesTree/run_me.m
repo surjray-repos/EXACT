@@ -1,5 +1,8 @@
 %% example of how to use Ancestree
 
+% to find functions to produce plots and compute errors
+addpath('../../all_tests/');
+
 % adding path for the AncesTree folders
 addpath(genpath(pwd));
 

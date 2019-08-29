@@ -1,5 +1,8 @@
 %% example of how to use PhyloWGS
 
+% to find functions to produce plots and compute errors
+addpath('../../all_tests/');
+
 % input file
 pwd_PhyloWGS = pwd;
 input_file = [pwd_PhyloWGS, '/../all_tests/Sample_test_data/AncesTree_data/simulated/Cov_1000_Samples_6_Mut_100_Clone_10_PCR_Removed/sim_4.input'];
