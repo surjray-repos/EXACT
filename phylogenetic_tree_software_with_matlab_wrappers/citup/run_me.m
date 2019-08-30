@@ -1,7 +1,15 @@
 %% example of how to use CITUP
 
+% first install CVX, if it is not install yet
+% we recommend downloading, and installing, the latest CVX version from
+% www.cvxr.com/cvx
+run([pwd, '/../EXACT/distribution/cvx/cvx/cvx_setup']);
+
 % adding path for the CITUP folders
 addpath(genpath(pwd));
+
+% to find functions to produce plots and compute errors
+addpath([pwd, '/../all_tests/']);
 
 % input file
 pwd_CITUP = pwd;

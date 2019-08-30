@@ -13,7 +13,7 @@
 %% running all tools on Ralph's simple data set
 %% load the data set
 
-input_file = '/home/surjray/Phylogeny_repo/phylogenetic_tree_software_with_matlab_wrappers/all_tests/Sample_test_data/ralphs_simple_data_set_all_mutations_except_mut_5';
+input_file = [pwd, '/../all_tests/Sample_test_data/ralphs_simple_data_set_all_mutations_except_mut_5'];
 
 %input_file = '/home/surjray/Phylogeny_repo/phylogenetic_tree_software_with_matlab_wrappers/all_tests/Sample_test_data/ralphs_second_simple_data_set_all_mutations';
 
@@ -24,7 +24,7 @@ input_file = '/home/surjray/Phylogeny_repo/phylogenetic_tree_software_with_matla
 
 figure;
 %% run our code
-base_folder = '/home/surjray/Phylogeny_repo/phylogenetic_tree_software_with_matlab_wrappers/EXACT';
+base_folder = [pwd, '/../EXACT'];
 
 run([base_folder, '/distribution/cvx/cvx/cvx_setup']);
 
@@ -98,7 +98,7 @@ generate_simple_muller_plots(U2,M_target,cum_nodelbs,node_col);
 set(gca,'visible','off')
 
 %% run PhyloWGS
-base_folder = '/home/surjray/Phylogeny_repo/phylogenetic_tree_software_with_matlab_wrappers/phylowgs';
+base_folder = [pwd, '/../phylowgs'];
 
 %Constants for PhyloWGS, should not be changed for sequencing data
 mu_r = 0.999;
@@ -166,7 +166,7 @@ generate_simple_muller_plots(U2,M_target,cum_nodelbs,node_col);
 set(gca,'visible','off')
 %% run AncesTree
 
-base_folder = '/home/surjray/Phylogeny_repo/phylogenetic_tree_software_with_matlab_wrappers/AncesTree';
+base_folder = [pwd, '/../AncesTree'];
 
 alpha = 0.3; % if alpha is big, lots of things will be clustered together
 beta = 0.8; % to choose a larger beta we need more samples , i.e. larger T_samples
@@ -222,7 +222,7 @@ generate_simple_muller_plots(U2,M_target,cum_nodelbs,node_col);
 set(gca,'visible','off')
 %% run Canopy
 
-base_folder =  '/home/surjray/backups_of_phylo_project/Dropbox_Phylogeny_project_11th_July_2019/phylogenetic_tree_software_with_matlab_wrappers/Canopy-master';
+base_folder = [pwd, '/../Canopy'];
 
 path_to_folder = [base_folder, '/demo_code/'];
 
@@ -278,7 +278,7 @@ M_target = M_target(:,[1,4,2,5,3,6]);
 generate_simple_muller_plots(U2,M_target,cum_nodelbs,node_col);
 set(gca,'visible','off')
 %% run CITUP
-base_folder = '/home/surjray/Phylogeny_repo/phylogenetic_tree_software_with_matlab_wrappers/citup';
+base_folder = [pwd, '/../citup'];
 
 % parameters
 wrapper_working_directory = [base_folder,'/distribution/'];

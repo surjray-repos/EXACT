@@ -11,11 +11,11 @@
 % GNU General Public License for more details.
 
 %% Loading workspaces with results of EXACT, AncesTree, PhyloWGS, CITUP and Canopy respectively. 
-load('/home/surjray/Phylogeny_repo/phylogenetic_tree_software_with_matlab_wrappers/all_tests/all_results/our_code_on_real_data_tree_sizes_6_9_top_20.mat','all_our_code_outputs');
-load('/home/surjray/Phylogeny_repo/phylogenetic_tree_software_with_matlab_wrappers/all_tests/all_results/ancestree_all_files_minus_a_few_ELKEBIR_real_data.mat','all_ancestree_output');
-load('/home/surjray/Phylogeny_repo/phylogenetic_tree_software_with_matlab_wrappers/all_tests/all_results/phyloWGS_all_files_ELKEBIR_real_data.mat','all_phylosub_outputs');
-load('/home/surjray/Phylogeny_repo/phylogenetic_tree_software_with_matlab_wrappers/all_tests/all_results/citup_all_files_ELKEBIR_real_data.mat','all_citup_outputs');
-load('/home/surjray/Phylogeny_repo/phylogenetic_tree_software_with_matlab_wrappers/all_tests/all_results/all_canopy_outputs_on_real_Elkebir_data.mat','all_canopy_outputs');
+load([pwd, '/../all_tests/all_results/our_code_on_real_data_tree_sizes_6_9_top_20.mat'],'all_our_code_outputs');
+load([pwd, '/../all_tests/all_results/ancestree_all_files_minus_a_few_ELKEBIR_real_data.mat'],'all_ancestree_output');
+load([pwd, '/../all_tests/all_results/phyloWGS_all_files_ELKEBIR_real_data.mat'],'all_phylosub_outputs');
+load([pwd, '/../all_tests/all_results/citup_all_files_ELKEBIR_real_data.mat'],'all_citup_outputs');
+load([pwd, '/../all_tests/all_results/all_canopy_outputs_on_real_Elkebir_data.mat'],'all_canopy_outputs');
 
 
 alg = 1;
