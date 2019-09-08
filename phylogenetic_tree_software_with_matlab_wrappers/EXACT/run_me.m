@@ -8,7 +8,7 @@ run([pwd, '/distribution/cvx/cvx/cvx_setup']);
 % to find functions to produce plots and compute errors
 addpath('../../all_tests/');
 
-% adding path for the AncesTree folders
+% adding path for the EXACT folders
 addpath(genpath(pwd));
 
 % input file
